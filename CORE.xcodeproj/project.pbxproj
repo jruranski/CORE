@@ -33,6 +33,8 @@
 		3BC34A2424D162DF00012A8D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC34A2324D162DF00012A8D /* ProfileView.swift */; };
 		3BC34A2624D1775800012A8D /* PastWorkoutDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC34A2524D1775800012A8D /* PastWorkoutDetail.swift */; };
 		3BC34A2824D2C63400012A8D /* PastWorkoutSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC34A2724D2C63400012A8D /* PastWorkoutSummaryCard.swift */; };
+		3BC34A2A24D6C63600012A8D /* CustomizeWorkout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC34A2924D6C63600012A8D /* CustomizeWorkout.swift */; };
+		3BC34A2C24D70BD500012A8D /* MuscleCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC34A2B24D70BD500012A8D /* MuscleCard.swift */; };
 		3BE01E1624CC4B090056D2C0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE01E1524CC4B090056D2C0 /* Extensions.swift */; };
 		3BE01E1824CC5BC60056D2C0 /* AddNewWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE01E1724CC5BC60056D2C0 /* AddNewWorkoutView.swift */; };
 		3BE01E1A24CC618D0056D2C0 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE01E1924CC618C0056D2C0 /* ExercisesView.swift */; };
@@ -103,6 +105,8 @@
 		3BC34A2324D162DF00012A8D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3BC34A2524D1775800012A8D /* PastWorkoutDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastWorkoutDetail.swift; sourceTree = "<group>"; };
 		3BC34A2724D2C63400012A8D /* PastWorkoutSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastWorkoutSummaryCard.swift; sourceTree = "<group>"; };
+		3BC34A2924D6C63600012A8D /* CustomizeWorkout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomizeWorkout.swift; sourceTree = "<group>"; };
+		3BC34A2B24D70BD500012A8D /* MuscleCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleCard.swift; sourceTree = "<group>"; };
 		3BE01E1524CC4B090056D2C0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3BE01E1724CC5BC60056D2C0 /* AddNewWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewWorkoutView.swift; sourceTree = "<group>"; };
 		3BE01E1924CC618C0056D2C0 /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
@@ -248,6 +252,8 @@
 				3BC34A2324D162DF00012A8D /* ProfileView.swift */,
 				3BC34A2524D1775800012A8D /* PastWorkoutDetail.swift */,
 				3BC34A2724D2C63400012A8D /* PastWorkoutSummaryCard.swift */,
+				3BC34A2924D6C63600012A8D /* CustomizeWorkout.swift */,
+				3BC34A2B24D70BD500012A8D /* MuscleCard.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -395,6 +401,7 @@
 				3BA256F024C7455C007C6CE6 /* ArticleCardView.swift in Sources */,
 				3BE01E2C24CEDFAA0056D2C0 /* ActivityCard.swift in Sources */,
 				3BE01E3824CF122F0056D2C0 /* PresetExerciseRow.swift in Sources */,
+				3BC34A2A24D6C63600012A8D /* CustomizeWorkout.swift in Sources */,
 				3BE01E1C24CC66E60056D2C0 /* ExerciseDetail.swift in Sources */,
 				3BA2570124CAEA4C007C6CE6 /* WorkoutSummaryCard.swift in Sources */,
 				3BA256EC24C70C15007C6CE6 /* ExploreSmallCard.swift in Sources */,
@@ -418,6 +425,7 @@
 				3BC34A2824D2C63400012A8D /* PastWorkoutSummaryCard.swift in Sources */,
 				3BE01E3224CF002E0056D2C0 /* PastWorkoutCard.swift in Sources */,
 				3BA256E624C6E4B4007C6CE6 /* Modifiers.swift in Sources */,
+				3BC34A2C24D70BD500012A8D /* MuscleCard.swift in Sources */,
 				3BA256F624CA1D44007C6CE6 /* ScheduleView.swift in Sources */,
 				3BE01E3024CEFBBF0056D2C0 /* EquipmentCard.swift in Sources */,
 				3BA256BB24C48040007C6CE6 /* COREApp.swift in Sources */,

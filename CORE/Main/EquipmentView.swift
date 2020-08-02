@@ -16,33 +16,36 @@ struct EquipmentView: View {
     ]
     
     var body: some View {
-        VStack {
-            HStack(spacing: 5) {
-                Image(systemName: "chevron.left")
-                    .font(.system(size: 26, weight: .medium, design: .rounded))
-                Text("Equipment")
-                    .font(.system(size: 30, weight: .bold, design: .rounded))
-                Spacer()
-            }
-            .padding(.horizontal, 10)
-            .padding(.leading , 14)
-            .padding(.top, 30)
-            
-            HStack {
-                Text("Bars")
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
-                    .opacity(0.5)
-                    .padding(.leading, 24)
-                Spacer()
-            }
-            LazyVGrid(columns: columns) /*@START_MENU_TOKEN@*/{
+        ScrollView {
+            VStack {
+                HStack(spacing: 5) {
+                    Image(systemName: "chevron.left")
+                        .font(.system(size: 26, weight: .medium, design: .rounded))
+                    Text("Equipment")
+                        .font(.system(size: 30, weight: .bold, design: .rounded))
+                    Spacer()
+                }
+                .padding(.horizontal, 10)
+                .padding(.leading , 14)
+                .padding(.top, 30)
                 
-                EquipmentCard()
-                EquipmentCard()
-                EquipmentCard()
-            }/*@END_MENU_TOKEN@*/
-            
-            Spacer()
+                HStack {
+                    Text("Bars")
+                        .font(.system(size: 28, weight: .bold, design: .rounded))
+                        .opacity(0.5)
+                        .padding(.leading, 24)
+                    Spacer()
+                }
+                LazyVGrid(columns: columns, alignment: .center) /*@START_MENU_TOKEN@*/{
+                    
+                    EquipmentCard()
+                    EquipmentCard()
+                    EquipmentCard()
+                    
+                }/*@END_MENU_TOKEN@*/
+                
+                Spacer()
+            }
         }
     }
 }
