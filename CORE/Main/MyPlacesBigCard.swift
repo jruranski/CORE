@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MyPlacesBigCard: View {
+    
+    @Binding var showEquipment: Bool
+    
     var body: some View {
         
         HStack {
@@ -33,7 +36,7 @@ struct MyPlacesBigCard: View {
                         .modifier(ShadowModifier())
                 } //placeholder insert mapview
                 
-                
+                    Button(action: {showEquipment.toggle()}) {
                 VStack {
                     VStack {
                     Image(systemName: "bag")
@@ -46,6 +49,8 @@ struct MyPlacesBigCard: View {
                         .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
                         .modifier(ShadowModifier())
                 }
+                        
+                    }.foregroundColor(Color(.label))
                     
                     VStack {
                         Rectangle()
@@ -69,11 +74,13 @@ struct MyPlacesBigCard: View {
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         .modifier(ShadowModifier())
         
+        
+        
     }
 }
 
 struct MyPlacesBigCard_Previews: PreviewProvider {
     static var previews: some View {
-        MyPlacesBigCard()
+        MyPlacesBigCard(showEquipment: .constant(false))
     }
 }

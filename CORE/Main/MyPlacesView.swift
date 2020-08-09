@@ -12,14 +12,17 @@ import SwiftUI
 
 struct MyPlacesView: View {
     
+    
+    @State var showEquipment: Bool = false
+    
     var body: some View {
-        
+        ZStack {
         NavigationView {
             List {
-                MyPlacesBigCard()
+                MyPlacesBigCard(showEquipment: $showEquipment)
                 
                     
-                    MyPlacesBigCard()
+                MyPlacesBigCard(showEquipment: $showEquipment)
                         
                 VStack {
                     HStack {
@@ -64,6 +67,13 @@ struct MyPlacesView: View {
                 UITableView.appearance().separatorStyle = .none
             }
             
+        }
+        
+        if showEquipment {
+            EquipmentView(show: $showEquipment)
+                .animation(.easeInOut)
+                .transition(.move(edge: .trailing))
+        }
         }
     }
 }
