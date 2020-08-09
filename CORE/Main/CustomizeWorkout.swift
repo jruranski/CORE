@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct CustomizeWorkout: View {
+    
+    @Binding var showDetail: Bool
+    @Binding var showAdd: Bool
     var opacity = 0.5
     var rows = [
         GridItem(.adaptive(minimum: 80, maximum: 130)),
@@ -18,11 +21,13 @@ struct CustomizeWorkout: View {
     
     
     func save() {
-        
+        // save changes
+        showDetail.toggle()
+        showAdd.toggle()
     }
     
     func exit() {
-        
+        showDetail.toggle()
     }
     
     var body: some View {
@@ -198,12 +203,12 @@ struct CustomizeWorkout: View {
             .padding(.top)
             
             Spacer()
-        }
+        }.background(Color(.systemBackground))
     }
 }
 
 struct CustomizeWokrout_Previews: PreviewProvider {
     static var previews: some View {
-        CustomizeWorkout()
+        CustomizeWorkout(showDetail: .constant(false), showAdd: .constant(false))
     }
 }
