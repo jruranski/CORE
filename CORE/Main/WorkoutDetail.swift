@@ -9,6 +9,9 @@ import SwiftUI
 
 struct WorkoutDetail: View {
     
+    @Binding var showDetail: Bool
+    
+    
     var category = "Sets"
     var text = "4"
     
@@ -38,9 +41,11 @@ struct WorkoutDetail: View {
             VStack {
                 VStack {
                     HStack {
+                        Button(action: { showDetail.toggle()}) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.white)
                             .font(.system(size: 26, weight: .semibold, design: .rounded))
+                        }
                         Spacer()
                         
                         Image(systemName: "info.circle.fill")
@@ -120,6 +125,6 @@ struct WorkoutDetail: View {
 
 struct WorkoutDetail_Previews: PreviewProvider {
     static var previews: some View {
-        WorkoutDetail()
+        WorkoutDetail(showDetail: .constant(false))
     }
 }

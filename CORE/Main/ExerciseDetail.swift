@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ExerciseDetail: View {
+    
+    @Binding var showDetail: Bool
+    
+    
     var body: some View {
         ZStack {
             
@@ -32,9 +36,11 @@ struct ExerciseDetail: View {
             VStack {
                 VStack {
                     HStack {
+                        Button(action: { showDetail.toggle()}) {
                         Image(systemName: "chevron.left")
                             .foregroundColor(.white)
                             .font(.system(size: 26, weight: .semibold, design: .rounded))
+                        }
                         Spacer()
                         
                         Image(systemName: "info.circle.fill")
@@ -118,13 +124,13 @@ struct ExerciseDetail: View {
             
 //            .edgesIgnoringSafeArea(.all)
             //            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-        }
+        }.background(Color(.systemBackground))
     
     }
 }
 
 struct ExerciseDetail_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseDetail()
+        ExerciseDetail(showDetail: .constant(false))
     }
 }
