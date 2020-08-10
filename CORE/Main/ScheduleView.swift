@@ -10,6 +10,7 @@ import SwiftUI
 struct ScheduleView: View {
     
     @State var showAdd: Bool
+    @State var showWorkout: Bool = false
     
     var body: some View {
         ZStack {
@@ -77,17 +78,27 @@ struct ScheduleView: View {
                 .padding(.all, 10)
                 .padding(.leading, 14)
                 
-                BigScheduleCard()
+                Button(action: { showWorkout.toggle()}) {
+                    BigScheduleCard()
+                }
+                .buttonStyle(PlainButtonStyle())
                 
                 
                 
                 
                 Spacer()
             }.opacity(showAdd ? 0 : 1)
+            .opacity(showWorkout ? 0 : 1)
             .animation(.easeInOut)
             
             if showAdd {
                 AddNewWorkoutView(showAdd: $showAdd, showDetail: false)
+                    .animation(.easeInOut(duration: 0.2))
+                    .transition(.move(edge: .trailing))
+            }
+            
+            if showWorkout {
+                WorkoutView(showAdd: false, showWorkout: $showWorkout)
                     .animation(.easeInOut(duration: 0.2))
                     .transition(.move(edge: .trailing))
             }
