@@ -18,7 +18,10 @@ struct ActivityView: View {
                         .padding(.bottom, 10)
                         .padding(.top, 10)
                         VStack(spacing: 20) {
+                            NavigationLink(
+                                destination: PastWorkoutDetail()) {
                     PastWorkoutCard()
+                            }.buttonStyle(PlainButtonStyle())
                         .padding(.bottom, 10)
                         PastWorkoutCard()
                         }

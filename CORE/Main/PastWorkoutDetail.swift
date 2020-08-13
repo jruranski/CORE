@@ -11,25 +11,25 @@ struct PastWorkoutDetail: View {
     var body: some View {
         ScrollView {
             VStack {
-                HStack {
-                    Image(systemName: "chevron.left")
-                        .font(.system(size: 26, weight: .semibold, design: .rounded))
-                    Spacer()
-                }
-                .padding(.leading, 20)
-                .padding(.bottom, 20)
+//                HStack {
+//                    Image(systemName: "chevron.left")
+//                        .font(.system(size: 26, weight: .semibold, design: .rounded))
+//                    Spacer()
+//                }
+//                .padding(.leading, 20)
+//                .padding(.bottom, 20)
                 HStack {
                     VStack(alignment: .leading) {
                         Text("08/07/2020 - 13:14")
                             .font(.system(size: 14, weight: .regular, design: .rounded))
                             .opacity(0.5)
-                        Text("Full body workout")
-                            .font(.system(size: 30, weight: .bold, design: .rounded))
+//                        Text("Full body workout")
+//                            .font(.system(size: 30, weight: .bold, design: .rounded))
                     }
                     Spacer()
                     
                 }
-                .padding(.leading, 20)
+                .padding(.leading, 16)
                 
                 
                 PastWorkoutSummaryCard()
@@ -64,6 +64,7 @@ struct PastWorkoutDetail: View {
                 }.padding(.horizontal, 16).padding(.vertical)
                 Spacer()
             }
+            .navigationBarTitle(Text("Full body workout"), displayMode: .large)
         }
     }
 }

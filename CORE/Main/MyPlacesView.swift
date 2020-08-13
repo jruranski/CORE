@@ -14,6 +14,7 @@ struct MyPlacesView: View {
     
     
     @State var showEquipment: Bool = false
+    @Binding var showLocations: Bool
     
     var body: some View {
         ZStack {
@@ -67,7 +68,7 @@ struct MyPlacesView: View {
                 UITableView.appearance().separatorStyle = .none
             }
             
-        }
+        }.opacity(showEquipment ? 0 : 1)
         
         if showEquipment {
             EquipmentView(show: $showEquipment)
@@ -80,6 +81,6 @@ struct MyPlacesView: View {
 
 struct MyPlacesView_Previews: PreviewProvider {
     static var previews: some View {
-        MyPlacesView()
+        MyPlacesView(showLocations: .constant(false))
     }
 }

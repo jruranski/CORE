@@ -25,15 +25,15 @@ struct ArticleCardView: View {
                     
                     HStack(spacing: 2) {
                         Image(systemName: "heart.fill")
-                            .font(.system(size:12, weight: .semibold, design: .rounded ))
+                            .font(.system(size:11, weight: .semibold, design: .rounded ))
                         Text("Diet")
-                            .font(.system(size:14, weight: .semibold, design: .rounded ))
+                            .font(.system(size:12, weight: .semibold, design: .rounded ))
                     }
                     .foregroundColor(.red)
                     
                     Text("Cardio alone won't help you lose fat")
-                        .font(.system(size: 16, weight: .semibold, design: .rounded))
-                        .padding(.bottom, 10)
+                        .font(.system(size: 18, weight: .semibold, design: .rounded))
+                        .padding(.bottom, 5)
                 
                 Text("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel porttitor enim, eu maximus lacus. Suspendisse odio mauris, sodales at quam nec, mollis auctor erat. Nulla ut nunc luctus, luctus purus vel, suscipit turpis…")
                     .font(.system(size: 11, weight: .regular, design: .rounded))

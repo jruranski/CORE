@@ -8,14 +8,20 @@
 import SwiftUI
 
 struct ProfileView: View {
+    
+    @Binding var showProfile: Bool
+    
     var body: some View {
         
         
         VStack {
             
             HStack {
+                Button(action: {showProfile.toggle()}) {
                 Image(systemName: "chevron.left")
                     .font(.system(size: 24, weight: .semibold, design: .rounded))
+                    .foregroundColor(Color(.label))
+                }.buttonStyle(PlainButtonStyle())
                 Spacer()
             }
             .padding()
@@ -23,6 +29,7 @@ struct ProfileView: View {
             VStack {
                 Image("activityAbsDummy")
                     .resizable()
+                    .aspectRatio(contentMode: .fill)
                     .frame(width: 150, height: 150, alignment: .center)
                     .clipShape(Circle())
                     .shadow(radius: 10)
@@ -38,12 +45,12 @@ struct ProfileView: View {
             }
             .clipShape(RoundedRectangle(cornerRadius: 30.0))
             .shadow(radius: 20)
-        }
+        }.background(Color(.systemBackground))
     }
 }
 
 struct ProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        ProfileView()
+        ProfileView(showProfile: .constant(false))
     }
 }
