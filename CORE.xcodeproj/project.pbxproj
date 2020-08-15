@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3B77B53924E148670063152C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77B53824E148670063152C /* TabBar.swift */; };
+		3B7BB76B24E7D72000C627B4 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BB76924E7D72000C627B4 /* CoreData.xcdatamodeld */; };
 		3BA256BB24C48040007C6CE6 /* COREApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA256BA24C48040007C6CE6 /* COREApp.swift */; };
 		3BA256BD24C48040007C6CE6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA256BC24C48040007C6CE6 /* HomeView.swift */; };
 		3BA256BF24C48041007C6CE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA256BE24C48041007C6CE6 /* Assets.xcassets */; };
@@ -75,6 +76,7 @@
 
 /* Begin PBXFileReference section */
 		3B77B53824E148670063152C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		3B7BB76A24E7D72000C627B4 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		3BA256B724C48040007C6CE6 /* CORE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CORE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA256BA24C48040007C6CE6 /* COREApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = COREApp.swift; sourceTree = "<group>"; };
 		3BA256BC24C48040007C6CE6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -178,6 +180,7 @@
 			isa = PBXGroup;
 			children = (
 				3BA256BA24C48040007C6CE6 /* COREApp.swift */,
+				3B7BB76924E7D72000C627B4 /* CoreData.xcdatamodeld */,
 				3B77B53824E148670063152C /* TabBar.swift */,
 				3BA256F724CA1D4E007C6CE6 /* Main */,
 				3BA256F324C8D199007C6CE6 /* BigWorkoutCard.swift */,
@@ -426,6 +429,7 @@
 				3BE01E1624CC4B090056D2C0 /* Extensions.swift in Sources */,
 				3BA256BD24C48040007C6CE6 /* HomeView.swift in Sources */,
 				3BE01E2224CDCFA30056D2C0 /* MyPlacesBigCard.swift in Sources */,
+				3B7BB76B24E7D72000C627B4 /* CoreData.xcdatamodeld in Sources */,
 				3BC34A2824D2C63400012A8D /* PastWorkoutSummaryCard.swift in Sources */,
 				3BE01E3224CF002E0056D2C0 /* PastWorkoutCard.swift in Sources */,
 				3BA256E624C6E4B4007C6CE6 /* Modifiers.swift in Sources */,
@@ -752,6 +756,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		3B7BB76924E7D72000C627B4 /* CoreData.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				3B7BB76A24E7D72000C627B4 /* CoreData.xcdatamodel */,
+			);
+			currentVersion = 3B7BB76A24E7D72000C627B4 /* CoreData.xcdatamodel */;
+			path = CoreData.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 3BA256AF24C48040007C6CE6 /* Project object */;
 }
