@@ -26,13 +26,14 @@ struct SmallTitle: View {
                 Text(description)
                     .font(.system(size: 28, weight: .bold ,design: .rounded))
                     .opacity(0.6)
+//                    .padding(.bottom, 20)
                 Spacer()
             }
             .padding(.top, 8)
             .padding(.horizontal, 10)
 //            .padding(.bottom, 30)
         }
-        .frame(height: 100)
+        .frame(height: 120)
     }
 }
 

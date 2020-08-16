@@ -7,9 +7,61 @@
 
 import SwiftUI
 
+struct Section {
+    var name: String
+    var equipment: [Equipment]
+    
+    
+    
+    
+}
+
+
+
 struct EquipmentView: View {
     
     @Binding var show: Bool
+    
+    var equipmentString: String = ""
+    var availableEquipment: [String] = []
+    var equipment: [Equipment] = appendEquipment() // all items
+    
+    var sections: [Section] = []
+    
+    
+    init(show: Binding<Bool>, location: Location) {
+        equipmentString = location.equipment ?? ""
+        self._show = show
+        
+        
+        // get items from string and then add to availableEquipment
+        
+        
+        for index in equipment.indices {
+        for i in availableEquipment {
+            if i == equipment[index].name {
+                equipment[index].isPresent = true
+            }
+        }
+        }
+        
+        sections = getSections(eq: equipment)
+        
+    }
+    
+    func getSections(eq: [Equipment]) -> [Section] {
+        
+        var sections: [Section] = appendSections()
+        for section in sections.indices {
+        for i in eq {
+            if sections[section].name == i.category {
+                sections[section].equipment.append(i)
+            }
+        }
+        }
+        
+        return sections
+    }
     
     let columns = [
         GridItem(.flexible()),
@@ -65,6 +117,6 @@ struct EquipmentView: View {
 
 struct EquipmentView_Previews: PreviewProvider {
     static var previews: some View {
-        EquipmentView(show: .constant(true))
+        EquipmentView(show: .constant(true), location: .init())
     }
 }

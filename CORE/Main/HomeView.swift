@@ -11,7 +11,7 @@ struct HomeView: View {
     
     @State var showProfile: Bool = false
     @State var showLocations: Bool = false
-    
+    @State var showWorkout: Bool = false
     
     var body: some View {
 //        NavigationView {
@@ -74,9 +74,10 @@ struct HomeView: View {
                         .padding(.all, 10)
                         .font(.system(size: 16,weight: .medium, design: .rounded))
                     
+                    Button(action: { showWorkout.toggle()}) {
                     StartWorkoutCard()
                         .padding(.vertical, 20)
-                    
+                    }.buttonStyle(PlainButtonStyle())
                     
                     SmallTitle(text: "Recommended", description: "Discover new workouts")
                     
@@ -101,15 +102,15 @@ struct HomeView: View {
                                 .frame(width: 250, height: 275, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                             }
                         }
-                        .padding(.all, 30)
-                        .padding(.bottom, -50)
+                        .padding(.all, 20)
+                        .padding(.bottom, -40)
                     }
                     SmallTitle(text: "Learn", description: "Check your progress since last week")
                     
                     VStack {
                         ForEach(1..<4) {_ in
                             HStack(spacing: 20) {
-                                ActivitySmallCard()
+                                ActivitySmallCard(text: "Exercise Time", numberText: "64MIN/DAY", imageString: "arrowUpFilled", color: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1))
                                 ActivitySmallCard()
                             }
                         }
@@ -129,6 +130,7 @@ struct HomeView: View {
                 }
             }.opacity(showProfile ? 0 :1 )
             .opacity(showLocations ? 0 : 1)
+            .opacity(showWorkout ? 0 : 1)
             .animation(.linear)
             
             
@@ -142,6 +144,11 @@ struct HomeView: View {
                 ProfileView(showProfile: $showProfile)
                     .animation(.spring(response: 0.5, dampingFraction: 0.5, blendDuration: 0))
                     .transition(.move(edge: .top))
+            }
+            if showWorkout {
+                WorkoutView(showAdd: false, showWorkout: $showWorkout)
+                    .animation(.easeInOut(duration: 0.2))
+                    .transition(.move(edge: .trailing))
             }
         }
             

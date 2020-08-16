@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		3B77B53924E148670063152C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77B53824E148670063152C /* TabBar.swift */; };
 		3B7BB76B24E7D72000C627B4 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BB76924E7D72000C627B4 /* CoreData.xcdatamodeld */; };
+		3B7BB76F24E7E11100C627B4 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BB76E24E7E11100C627B4 /* BookmarkView.swift */; };
+		3B7BB77124E9464B00C627B4 /* EquipmentDataModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BB77024E9464B00C627B4 /* EquipmentDataModel.swift */; };
+		3B7BB77324E94C4600C627B4 /* AddPlaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BB77224E94C4600C627B4 /* AddPlaceView.swift */; };
 		3BA256BB24C48040007C6CE6 /* COREApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA256BA24C48040007C6CE6 /* COREApp.swift */; };
 		3BA256BD24C48040007C6CE6 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA256BC24C48040007C6CE6 /* HomeView.swift */; };
 		3BA256BF24C48041007C6CE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BA256BE24C48041007C6CE6 /* Assets.xcassets */; };
@@ -77,6 +80,9 @@
 /* Begin PBXFileReference section */
 		3B77B53824E148670063152C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		3B7BB76A24E7D72000C627B4 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
+		3B7BB76E24E7E11100C627B4 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
+		3B7BB77024E9464B00C627B4 /* EquipmentDataModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EquipmentDataModel.swift; sourceTree = "<group>"; };
+		3B7BB77224E94C4600C627B4 /* AddPlaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddPlaceView.swift; sourceTree = "<group>"; };
 		3BA256B724C48040007C6CE6 /* CORE.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CORE.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BA256BA24C48040007C6CE6 /* COREApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = COREApp.swift; sourceTree = "<group>"; };
 		3BA256BC24C48040007C6CE6 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
@@ -184,6 +190,7 @@
 				3B77B53824E148670063152C /* TabBar.swift */,
 				3BA256F724CA1D4E007C6CE6 /* Main */,
 				3BA256F324C8D199007C6CE6 /* BigWorkoutCard.swift */,
+				3B7BB77024E9464B00C627B4 /* EquipmentDataModel.swift */,
 				3BA256F824CAC047007C6CE6 /* InfoSmallCard.swift */,
 				3BA2570624CC4549007C6CE6 /* InfoBigCard.swift */,
 				3BA256FA24CAC24A007C6CE6 /* BigScheduleCard.swift */,
@@ -234,6 +241,7 @@
 			children = (
 				3BA256BC24C48040007C6CE6 /* HomeView.swift */,
 				3BA256F124C8BCE4007C6CE6 /* ExploreView.swift */,
+				3B7BB76E24E7E11100C627B4 /* BookmarkView.swift */,
 				3BA256F524CA1D44007C6CE6 /* ScheduleView.swift */,
 				3BE01E1724CC5BC60056D2C0 /* AddNewWorkoutView.swift */,
 				3BE01E1D24CC6AE30056D2C0 /* NewWorkoutDetailView.swift */,
@@ -241,6 +249,7 @@
 				3BE01E1924CC618C0056D2C0 /* ExercisesView.swift */,
 				3BE01E2524CECBEF0056D2C0 /* ExercisesCard.swift */,
 				3BE01E1F24CD8B690056D2C0 /* MyPlacesView.swift */,
+				3B7BB77224E94C4600C627B4 /* AddPlaceView.swift */,
 				3BE01E2124CDCFA30056D2C0 /* MyPlacesBigCard.swift */,
 				3BE01E2724CED5A60056D2C0 /* EquipmentView.swift */,
 				3BE01E2F24CEFBBF0056D2C0 /* EquipmentCard.swift */,
@@ -395,8 +404,10 @@
 			files = (
 				3BE01E1E24CC6AE30056D2C0 /* NewWorkoutDetailView.swift in Sources */,
 				3BA256FB24CAC24A007C6CE6 /* BigScheduleCard.swift in Sources */,
+				3B7BB77124E9464B00C627B4 /* EquipmentDataModel.swift in Sources */,
 				3BA2570324CC37F7007C6CE6 /* ExerciseWorkoutCard.swift in Sources */,
 				3BE01E1824CC5BC60056D2C0 /* AddNewWorkoutView.swift in Sources */,
+				3B7BB77324E94C4600C627B4 /* AddPlaceView.swift in Sources */,
 				3BA256EA24C6E8B1007C6CE6 /* SmallTitle.swift in Sources */,
 				3BA256F924CAC047007C6CE6 /* InfoSmallCard.swift in Sources */,
 				3BA256F224C8BCE4007C6CE6 /* ExploreView.swift in Sources */,
@@ -429,6 +440,7 @@
 				3BE01E1624CC4B090056D2C0 /* Extensions.swift in Sources */,
 				3BA256BD24C48040007C6CE6 /* HomeView.swift in Sources */,
 				3BE01E2224CDCFA30056D2C0 /* MyPlacesBigCard.swift in Sources */,
+				3B7BB76F24E7E11100C627B4 /* BookmarkView.swift in Sources */,
 				3B7BB76B24E7D72000C627B4 /* CoreData.xcdatamodeld in Sources */,
 				3BC34A2824D2C63400012A8D /* PastWorkoutSummaryCard.swift in Sources */,
 				3BE01E3224CF002E0056D2C0 /* PastWorkoutCard.swift in Sources */,

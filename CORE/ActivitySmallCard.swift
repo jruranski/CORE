@@ -38,9 +38,9 @@ struct ActivitySmallCard: View {
             }
         }
         .frame(width: 150, height: 65, alignment: .center)
-        .background(Color.white)
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
-        .shadow(color: Color.black.opacity(0.2), radius: 15, y: 3)
+        .shadow(color: Color(.label).opacity(0.2), radius: 15, y: 3)
     }
 }
 

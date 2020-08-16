@@ -11,6 +11,19 @@ struct MyPlacesBigCard: View {
     
     @Binding var showEquipment: Bool
     
+//    let onDetail: () -> Void
+    
+    var text: String
+    var subtitle: String
+    var location: Location
+    
+    init(show: Binding<Bool>, location: Location) {
+        text = location.name ?? "Gym"
+        subtitle = "Full Equipment" // change depending on equipment
+        self.location = location
+        _showEquipment = show
+    }
+    
     var body: some View {
         
         HStack {
@@ -53,10 +66,15 @@ struct MyPlacesBigCard: View {
                     }.foregroundColor(Color(.label))
                     
                     VStack {
-                        Rectangle()
-                            .foregroundColor(.white)
+                        VStack {
+                            Image(systemName: "location.circle")
+                                .font(.system(size: 28, weight: .semibold, design: .rounded))
+                                Text("Select Location")
+                                    .font(.system(size: 12, weight: .light, design: .rounded))
+                        }
+//                            .foregroundColor(.white)
                             .frame(width: 90, height: 90, alignment: .center)
-                            .background(Color.blue)
+                        .background(Color(.systemBackground))
                             .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
                             .modifier(ShadowModifier())
                     }
@@ -81,6 +99,6 @@ struct MyPlacesBigCard: View {
 
 struct MyPlacesBigCard_Previews: PreviewProvider {
     static var previews: some View {
-        MyPlacesBigCard(showEquipment: .constant(false))
+        MyPlacesBigCard(show: .constant(false), location: .init())
     }
 }
