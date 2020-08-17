@@ -31,6 +31,7 @@
         <attribute name="image" optional="YES" attributeType="String"/>
         <attribute name="longText" optional="YES" attributeType="String"/>
         <attribute name="name" optional="YES" attributeType="String"/>
+        <attribute name="saved" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <relationship name="presetExercises" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="Exercise" inverseName="preset" inverseEntity="Exercise"/>
     </entity>
     <entity name="Workout" representedClassName="Workout" syncable="YES" codeGenerationType="class">
@@ -46,9 +47,9 @@
         <relationship name="location" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Location" inverseName="workoutLocation" inverseEntity="Location"/>
     </entity>
     <elements>
-        <element name="Location" positionX="-63" positionY="-18" width="128" height="118"/>
         <element name="Exercise" positionX="-54" positionY="18" width="128" height="283"/>
+        <element name="Location" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Preset" positionX="-18" positionY="153" width="128" height="148"/>
         <element name="Workout" positionX="-36" positionY="126" width="128" height="193"/>
-        <element name="Preset" positionX="-18" positionY="153" width="128" height="133"/>
     </elements>
 </model>

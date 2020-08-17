@@ -45,6 +45,27 @@ struct PresetWorkoutDetail: View {
                 }
                 
                 .navigationBarTitle(Text("Workout name"))
+                    .navigationBarItems(trailing:
+                    
+                                            HStack(spacing: 10) {
+                                                
+                                                Image(systemName: "bookmark")
+                                                
+                                                Image(systemName: "plus")
+                                                    .renderingMode(.original)
+                                                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                                                    //                .aspectRatio(contentMode: .fit)
+                                                    .padding(.all,  2)
+                                                    .frame(width: 36, height: 36, alignment: .center)
+                                                    .background(Color.white)
+                                                    .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+                                                .shadow(color: Color(.label).opacity(0.15), radius: 10, y: 3)
+                                                    .shadow(color: Color(.label).opacity(0.15), radius: 1, y: 1)
+                                            }
+                                        
+                
+                    
+                    )
             }
         }
         

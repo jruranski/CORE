@@ -14,7 +14,7 @@ struct MyPlacesView: View {
     
     
     @FetchRequest(entity: Location.entity(), sortDescriptors: []) var locations: FetchedResults<Location>
-    
+    @State var showAdd: Bool = false
     @State var showEquipment: Bool = false
     @Binding var showLocations: Bool
     var location: Location?
@@ -35,16 +35,18 @@ struct MyPlacesView: View {
                                 Spacer()
                                 
                         }
-                        Image(systemName: "plus")
-                            .renderingMode(.original)
-                            .font(.system(size: 18, weight: .bold, design: .rounded))
-            //                .aspectRatio(contentMode: .fit)
-                            .padding(.all,  2)
-                            .frame(width: 36, height: 36, alignment: .center)
-                            .background(Color.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
-                            .shadow(color: Color.black.opacity(0.1), radius: 10, y: 6)
-                            .shadow(color: Color.black.opacity(0.15), radius: 1, y: 1)
+                        Button(action: { showAdd.toggle()}) {
+                            Image(systemName: "plus")
+                                .renderingMode(.original)
+                                .font(.system(size: 18, weight: .bold, design: .rounded))
+                //                .aspectRatio(contentMode: .fit)
+                                .padding(.all,  2)
+                                .frame(width: 36, height: 36, alignment: .center)
+                                .background(Color.white)
+                                .clipShape(RoundedRectangle(cornerRadius: 13, style: .continuous))
+                                .shadow(color: Color.black.opacity(0.1), radius: 10, y: 6)
+                                .shadow(color: Color.black.opacity(0.15), radius: 1, y: 1)
+                        }.buttonStyle(PlainButtonStyle())
                     }
                     }
                     .padding(.horizontal, 10)
@@ -100,12 +102,19 @@ struct MyPlacesView: View {
             }
             
         }.opacity(showEquipment ? 0 : 1)
+            .opacity(showAdd ? 0 : 1)
+            .animation(.linear)
         
         if showEquipment {
             EquipmentView(show: $showEquipment, location: location!)
-                .animation(.easeInOut)
+                .animation(.easeInOut(duration: 0.2))
                 .transition(.move(edge: .trailing))
         }
+            if showAdd {
+                AddPlaceView(showAdd: $showAdd)
+                    .animation(.spring())
+                    .transition(.move(edge: .trailing))
+            }
         }
     }
 }

@@ -8,10 +8,15 @@
 import SwiftUI
 
 struct BookmarkView: View {
+    
+    
+    
     var body: some View {
         List {
             ForEach(1..<6) { _ in
+                NavigationLink(destination: PresetWorkoutDetail()) {
                 BookmarkRow()
+                }.buttonStyle(PlainButtonStyle())
             }
             .navigationBarTitle(Text("Saved"))
         }
@@ -56,8 +61,8 @@ struct BookmarkRow: View {
                         .opacity(0.5)
                 }
                 Spacer()
-                Image(systemName: "chevron.right")
-                    .padding()
+//                Image(systemName: "chevron.right")
+//                    .padding()
             }
         }.padding()
     }

@@ -91,17 +91,17 @@ struct ExploreView: View {
                                             .font(.system(size: 30, weight: .bold, design: .rounded))
                                         , displayMode: .large)
                     .navigationBarItems(trailing:
+                                            NavigationLink(destination: BookmarkView()) {
                     Image(systemName: "bookmark.fill")
                                             .padding(.trailing, 10)
         //                                    .offset(x: 0, y: 47)
+                                            }.buttonStyle(PlainButtonStyle())
                 )
                 }
             }.opacity(showBookmarks ? 0 : 1)
             .animation(.linear)
             
-            if showBookmarks {
-                
-            }
+            
             
             
         }

@@ -7,14 +7,36 @@
 
 import SwiftUI
 
+struct Weekday {
+    var id: Int
+    var name: String
+    var workouts: [Workout]
+}
+
+
 struct ScheduleView: View {
     
-    @State var showAdd: Bool
+    @FetchRequest(entity: Workout.entity(), sortDescriptors: []) var workouts: FetchedResults<Workout>
+    
+    var weekdaysStrings = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    var weekdays: [Weekday] = []
+    @State var showAdd: Bool = false
     @State var showWorkout: Bool = false
+    
+    /*
+    func getSection() {
+        for i in weekdaysStrings {
+            var date = Date()
+            
+        }
+    }
+    */
+    
     
     var body: some View {
         ZStack {
-            VStack {
+            ScrollView {
+                VStack {
                 VStack {
                         HStack {
                             Text("Schedule")
@@ -68,21 +90,22 @@ struct ScheduleView: View {
                     .padding(.leading , 14)
                 .padding(.top, 30)
                 
-                
+                    ForEach(weekdays, id: \.id) { weekday in
                 HStack {
-                    Text("Monday")
+                    Text(weekday.name)
                         .font(.system(size: 28, weight: .bold, design: .rounded))
                         .opacity(0.4)
                     Spacer()
                 }
                 .padding(.all, 10)
                 .padding(.leading, 14)
-                
+                        ForEach(weekday.workouts) { workout in
                 Button(action: { showWorkout.toggle()}) {
                     BigScheduleCard()
                 }
                 .buttonStyle(PlainButtonStyle())
-                
+                        }
+                    }
                 
                 
                 
@@ -90,7 +113,7 @@ struct ScheduleView: View {
             }.opacity(showAdd ? 0 : 1)
             .opacity(showWorkout ? 0 : 1)
             .animation(.easeInOut)
-            
+            }
             if showAdd {
                 AddNewWorkoutView(showAdd: $showAdd, showDetail: false)
                     .animation(.easeInOut(duration: 0.2))
