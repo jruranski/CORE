@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B022ADA24F7AB020004E528 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B022AD924F7AB020004E528 /* DatePickerView.swift */; };
+		3B23301724EBC37F0064E133 /* NumberChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B23301624EBC37F0064E133 /* NumberChangeView.swift */; };
+		3B23301924EBF5230064E133 /* DateOpperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B23301824EBF5230064E133 /* DateOpperations.swift */; };
 		3B77B53924E148670063152C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77B53824E148670063152C /* TabBar.swift */; };
 		3B7BB76B24E7D72000C627B4 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BB76924E7D72000C627B4 /* CoreData.xcdatamodeld */; };
 		3B7BB76F24E7E11100C627B4 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BB76E24E7E11100C627B4 /* BookmarkView.swift */; };
@@ -78,6 +81,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B022AD924F7AB020004E528 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		3B23301624EBC37F0064E133 /* NumberChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberChangeView.swift; sourceTree = "<group>"; };
+		3B23301824EBF5230064E133 /* DateOpperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOpperations.swift; sourceTree = "<group>"; };
 		3B77B53824E148670063152C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		3B7BB76A24E7D72000C627B4 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		3B7BB76E24E7E11100C627B4 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
@@ -190,6 +196,8 @@
 				3B77B53824E148670063152C /* TabBar.swift */,
 				3BA256F724CA1D4E007C6CE6 /* Main */,
 				3BA256F324C8D199007C6CE6 /* BigWorkoutCard.swift */,
+				3B022AD924F7AB020004E528 /* DatePickerView.swift */,
+				3B23301824EBF5230064E133 /* DateOpperations.swift */,
 				3B7BB77024E9464B00C627B4 /* EquipmentDataModel.swift */,
 				3BA256F824CAC047007C6CE6 /* InfoSmallCard.swift */,
 				3BA2570624CC4549007C6CE6 /* InfoBigCard.swift */,
@@ -246,6 +254,7 @@
 				3BE01E1724CC5BC60056D2C0 /* AddNewWorkoutView.swift */,
 				3BE01E1D24CC6AE30056D2C0 /* NewWorkoutDetailView.swift */,
 				3BA256FE24CAE934007C6CE6 /* WorkoutView.swift */,
+				3B23301624EBC37F0064E133 /* NumberChangeView.swift */,
 				3BE01E1924CC618C0056D2C0 /* ExercisesView.swift */,
 				3BE01E2524CECBEF0056D2C0 /* ExercisesCard.swift */,
 				3BE01E1F24CD8B690056D2C0 /* MyPlacesView.swift */,
@@ -428,8 +437,10 @@
 				3BE01E3624CF041D0056D2C0 /* PresetExerciseCard.swift in Sources */,
 				3BE01E2E24CEF02A0056D2C0 /* ActivitySeparator.swift in Sources */,
 				3BE01E2424CEC6A60056D2C0 /* SearchBar.swift in Sources */,
+				3B022ADA24F7AB020004E528 /* DatePickerView.swift in Sources */,
 				3BE01E2624CECBEF0056D2C0 /* ExercisesCard.swift in Sources */,
 				3BA256FD24CAD07F007C6CE6 /* RestDayCard.swift in Sources */,
+				3B23301924EBF5230064E133 /* DateOpperations.swift in Sources */,
 				3BE01E3424CF00430056D2C0 /* PresetWorkoutDetail.swift in Sources */,
 				3BE01E1A24CC618D0056D2C0 /* ExercisesView.swift in Sources */,
 				3BA256E824C6E65E007C6CE6 /* StartWorkoutCard.swift in Sources */,
@@ -445,6 +456,7 @@
 				3BC34A2824D2C63400012A8D /* PastWorkoutSummaryCard.swift in Sources */,
 				3BE01E3224CF002E0056D2C0 /* PastWorkoutCard.swift in Sources */,
 				3BA256E624C6E4B4007C6CE6 /* Modifiers.swift in Sources */,
+				3B23301724EBC37F0064E133 /* NumberChangeView.swift in Sources */,
 				3BC34A2C24D70BD500012A8D /* MuscleCard.swift in Sources */,
 				3BA256F624CA1D44007C6CE6 /* ScheduleView.swift in Sources */,
 				3BE01E3024CEFBBF0056D2C0 /* EquipmentCard.swift in Sources */,

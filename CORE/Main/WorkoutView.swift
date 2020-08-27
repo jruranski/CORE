@@ -15,6 +15,8 @@ struct WorkoutView: View {
     @Binding var showWorkout: Bool
     
     
+    var workout: Workout?
+    
     var body: some View {
         ZStack {
              NavigationView {
@@ -27,10 +29,11 @@ struct WorkoutView: View {
                             StartButtons(started: $workoutStarted, running: $workoutRunning)
                                 .padding()
                         }
+//                        ForEach((workout?.exercises)!) { exercise in
                         Button(action: {showDetail.toggle()}) {
                         ExerciseWorkoutCard()
                         }.buttonStyle(PlainButtonStyle())
-                        
+//                        }
                         Spacer()
                         
                         workoutStarted ? StartButtons(started: $workoutStarted, running: $workoutRunning) : nil
@@ -39,16 +42,16 @@ struct WorkoutView: View {
                     
                     
                     
-                    .navigationBarTitle(Text("Workout")
-                                            .font(.system(size:30, weight: .bold, design: .rounded))
+                    .navigationBarTitle(Text(workout?.name ?? "Workout")
+                                            
                     )
                     .navigationBarItems(leading:
-                                            
+                                            workoutStarted ? nil :
                                             Button(action: {showWorkout.toggle()}) {
                                                 Image(systemName: "chevron.left")
                                                     .font(.system(size: 22, weight: .medium, design: .rounded))
                                                     .foregroundColor(Color(.label))
-                                            }
+                        }
                                         ,trailing:
                                             
                                             HStack {
@@ -116,19 +119,24 @@ struct StartButtons: View {
     func changeStates(pauseButton: Bool, start: Bool, running: Bool) {
         if pauseButton {
         if start == true && running == false {
+            //unpause workout
             self.started = true
             self.running = true
         }else if start == false {
+            // start workout
             self.started = true
             self.running = true
         }else if start == true && running == false {
+            // unpause wokrout
             self.started = true
             self.running = true
         }else if start == true && running == true {
+            // pause workout
             self.started = true
             self.running = false
         }
         }else{
+            // end workout
             self.started = false
             self.running = false
         }
@@ -154,8 +162,9 @@ struct StartButtons: View {
             if running == false {
             started ? Spacer() : nil
             }
+            Button(action: {changeStates(pauseButton: true, start: started, running: running)}) {
             VStack {
-                Button(action: {changeStates(pauseButton: true, start: started, running: running)}) {
+                
                     Image(systemName: started ? (running ? "pause" : "play.fill") : "play.fill")
                         .foregroundColor(.white)
                         .font(.system(size:28, weight: .bold, design: .rounded))

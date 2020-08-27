@@ -88,7 +88,7 @@ struct ExploreView: View {
                     }
                     .padding(.top, 10)
                     .navigationBarTitle(Text("Explore")
-                                            .font(.system(size: 30, weight: .bold, design: .rounded))
+                                            
                                         , displayMode: .large)
                     .navigationBarItems(trailing:
                                             NavigationLink(destination: BookmarkView()) {

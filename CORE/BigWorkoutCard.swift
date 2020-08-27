@@ -9,27 +9,29 @@ import SwiftUI
 
 struct BigWorkoutCard: View {
     
+    var title: String = "Full on Burn"
+    var subtitle: String = "The app will create a workout customized just for you"
+    var image: String = "aiRobotCard"
+    var logo: Image = Image(systemName: "bolt.heart")
     
-    
-    
-    
-    
+    var startingColor: UIColor = #colorLiteral(red: 1, green: 0, blue: 0.4162199199, alpha: 1)
+    var endColor: UIColor = #colorLiteral(red: 0.9772351384, green: 0.6079230905, blue: 0, alpha: 1)
     
     var body: some View {
         VStack {
             HStack {
                 VStack(alignment: .leading) {
-                    Text("Full on Burn") // add custom string
+                    Text(title) // add custom string
                         .font(.system(size: 26,weight: .bold, design: .rounded))
-                    Text("No pain no gain!") // add custom string
+                    Text(subtitle) // add custom string
                         .font(.system(size: 14, weight: .medium, design: .rounded))
                 }
                 .foregroundColor(.white)
                 
                 Spacer()
                 
-                Image(systemName: "bolt.heart") // add custom string
-                    .foregroundColor(.red)
+                logo // add custom string
+                    .foregroundColor(Color(startingColor))
                     .font(.system(size: 20, weight: .medium))
                     .frame(width: 36, height: 36, alignment: .center)
                     .background(Color.white)
@@ -40,17 +42,17 @@ struct BigWorkoutCard: View {
             .padding(.vertical, 20)
             
             Spacer()
-            Image("aiRobotCard") // add custom string
+            Image(image) // add custom string
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 200, height: 110, alignment: .center)
         }
-        .frame(width: 315, height: 210, alignment: .center)
+        .frame(width: 315, height: 240, alignment: .center)
         .background(
-            LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing) //add custom colors
+            LinearGradient(gradient: Gradient(colors: [Color(startingColor), Color(endColor)]), startPoint: .topLeading, endPoint: .bottomTrailing) //add custom colors
         )
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-        .shadow(color: Color(#colorLiteral(red: 0.9254902005, green: 0.2352941185, blue: 0.1019607857, alpha: 1)).opacity(0.2), radius: 20, y: 15)
+        .shadow(color: Color(endColor).opacity(0.2), radius: 20, y: 15)
     }
 }
 

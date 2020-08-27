@@ -54,14 +54,15 @@ struct WorkoutSummaryCard: View {
                 }
                     
                 }
-                }.foregroundColor(.white)
+                }
+//                .foregroundColor(.white)
                 .padding(.horizontal, 10)
             }.background(
                 ZStack {
-                    LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                        .frame(width: 350, height: 180, alignment: .bottom)//add custom colors
-                        .cornerRadius(8, corners: [.topLeft, .topRight])
-                        .offset(y: 20)
+//                    LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing)
+//                        .frame(width: 350, height: 180, alignment: .bottom)//add custom colors
+//                        .cornerRadius(8, corners: [.topLeft, .topRight])
+//                        .offset(y: 20)
                         
 //                    Color.white.opacity(1)
 //                        .frame(width: 350, height: 180, alignment: .bottom)//add custom colors
@@ -77,7 +78,7 @@ struct WorkoutSummaryCard: View {
         .background(Color(.systemBackground)) // change for dm
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
 //        .shadow(radius: 20)
-        .shadow(color: Color(#colorLiteral(red: 0.9995438457, green: 0.4322041273, blue: 0.08174730092, alpha: 1)).opacity(0.15), radius: 10, y: 8)
+        .shadow(color: Color(.label).opacity(0.15), radius: 10, y: 8)
         .shadow(color: Color(.label).opacity(0.2), radius: 1, y: -1)
         
     }

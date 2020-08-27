@@ -7,10 +7,16 @@
 
 import SwiftUI
 
-struct Weekday {
+class WeekdaySection {
     var id: Int
     var name: String
     var workouts: [Workout]
+    
+    init(id: Int, name: String, workouts: [Workout]) {
+        self.id = id
+        self.name = name
+        self.workouts = workouts
+    }
 }
 
 
@@ -19,18 +25,36 @@ struct ScheduleView: View {
     @FetchRequest(entity: Workout.entity(), sortDescriptors: []) var workouts: FetchedResults<Workout>
     
     var weekdaysStrings = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-    var weekdays: [Weekday] = []
+    var weekdays: [WeekdaySection] = []
     @State var showAdd: Bool = false
     @State var showWorkout: Bool = false
     
-    /*
-    func getSection() {
-        for i in weekdaysStrings {
-            var date = Date()
+    
+     func getSection() -> [WeekdaySection]{
+        var weekdays: [WeekdaySection] = []
+        var formattedString: String?
+        
+        let date = Date()
+//        let formatter = DateFormatter()
+        let startDate = date.dayOfWeek() ?? "Monday"
+        let index = weekdaysStrings.firstIndex(of: startDate)
+        var inx = 0
+        
+        for i in weekdaysStrings.indices {
+            if i < index! {
+                weekdays.append(WeekdaySection(id: weekdaysStrings.count - inx, name: weekdaysStrings[i], workouts: []))
+            }else if i == index {
+                weekdays.insert(WeekdaySection(id: 0, name: startDate, workouts: []), at: 0)
+                inx += 1
+            }else if i > index! {
+                weekdays.insert(WeekdaySection(id: inx, name: weekdaysStrings[i], workouts: []), at: inx)
+                inx += 1
+            }
             
         }
+        return weekdays
     }
-    */
+    
     
     
     var body: some View {
@@ -126,6 +150,8 @@ struct ScheduleView: View {
                     .transition(.move(edge: .trailing))
             }
             
+        }.onAppear {
+//            weekdays = getSection()
         }
     }
 }

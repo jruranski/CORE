@@ -10,16 +10,22 @@ import SwiftUI
 struct WorkoutDetail: View {
     
     @Binding var showDetail: Bool
-    
+    @State var setShow: Bool = false
+    @State var setString: String = "8"
+    @State var repsShow: Bool = false
+    @State var repsString: String = "8"
+    @State var weightShow: Bool = false
+    @State var weightString: String = "50"
     
     var category = "Sets"
     var text = "4"
     
-    
+    var workout: Workout?
+    var exercise: Exercise?
     
     var body: some View {
         ZStack {
-            
+            ZStack {
             ZStack {
                 VStack {
                     Image("activityAbsDummy")
@@ -80,12 +86,18 @@ struct WorkoutDetail: View {
                     Text("Squats")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
                     HStack(spacing: 10) {
-                        InfoBigCard()
+                        Button(action: {setShow.toggle()}) {
+                        InfoBigCard(category: "Sets", text: setString)
+                        }.buttonStyle(PlainButtonStyle())
                         Spacer()
-                        InfoBigCard(category: "Reps", text: "12")
+                        Button(action: { repsShow.toggle()}) {
+                            InfoBigCard(category: "Reps", text: repsString)
+                        }.buttonStyle(PlainButtonStyle())
                         Spacer()
-                        InfoBigCard(category: "Weight", text: "50kg")
-                    }
+                        
+                        Button(action:{ weightShow.toggle()}){
+                            InfoBigCard(category: "Weight", text: "\(weightString)kg")
+                        }.buttonStyle(PlainButtonStyle())                    }
                     .padding(.horizontal, 16)
                     
                     WorkoutSummaryCard()
@@ -113,11 +125,30 @@ struct WorkoutDetail: View {
                 .background(Color.white)
                 .cornerRadius(30, corners: [.topLeft, .topRight])
                 
-                
             }
-            
+            }.opacity(setShow ? 0 : 1)
+            .opacity(repsShow ? 0 : 1)
+            .opacity(weightShow ? 0 : 1)
+            .animation(.linear)
 //            .edgesIgnoringSafeArea(.all)
             //            .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
+            
+            if setShow {
+                NumberChangeView(show: $setShow, string: $setString, suffix: .constant(""))
+                    .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0))
+                    .transition(.move(edge: .bottom))
+            }
+            if repsShow {
+                NumberChangeView(show: $repsShow, string: $repsString, suffix: .constant(""))
+                    .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0))
+                    .transition(.move(edge: .bottom))
+            }
+            if weightShow {
+                NumberChangeView(show: $weightShow, string: $weightString, suffix: .constant("kg"))
+                    .animation(.spring(response: 0.5, dampingFraction: 0.7, blendDuration: 0))
+                    .transition(.move(edge: .bottom))
+            }
+            
         }
     
     }
