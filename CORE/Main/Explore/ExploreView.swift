@@ -29,13 +29,13 @@ struct ExploreView: View {
                                 }
                                 
                             }
-                            .frame(width: 320, height: 275)
+                            
                             
                             .padding(.all, 30)
                             .padding(.top, -20)
     //                        .padding(.leading, 10)
                             .padding(.bottom, -20)
-                        }
+                        }.frame(width: 375, height: 275)
                         
                         
                         ForEach(1..<3) { _ in

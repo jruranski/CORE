@@ -18,8 +18,8 @@ struct CustomizeWorkout: View {
     @Binding var showAdd: Bool
     var opacity = 0.5
     var rows = [
-        GridItem(.adaptive(minimum: 80, maximum: 130)),
-                 GridItem(.adaptive(minimum: 80, maximum: 130))
+        GridItem(.flexible(minimum: 70, maximum: 130)),
+        GridItem(.flexible(minimum: 70, maximum: 130))
     ]
     
    @State var titleString: String = ""
@@ -53,6 +53,7 @@ struct CustomizeWorkout: View {
                         Text("Choose muscle groups to workout")
                             .font(.system(size: 16, weight: .medium, design: .rounded))
                             .opacity(opacity)
+                            .padding(.leading, 16) // maybe
                     }
                     Spacer()
                     
@@ -62,18 +63,29 @@ struct CustomizeWorkout: View {
                 .padding(.top, 5)
                 ScrollView(.horizontal, showsIndicators: false) {
                     
-                        LazyHGrid(rows: rows) /*@START_MENU_TOKEN@*/{
-                        
-                            ForEach(0..<9) { item in
-                            MuscleCard()
-                        }
-                        
-                    }/*@END_MENU_TOKEN@*/
-                    .frame(width: 375, height: 250)
-                        .padding(.leading, 6)
                     
-            }.frame(width: 375, height: 250)
-            
+                    
+                        LazyHGrid(rows: rows, alignment: .center) /*@START_MENU_TOKEN@*/{
+                                
+                            
+                                ForEach(0..<10) { item in
+                                            
+                                                MuscleCard()
+                                            
+                                }
+                            
+                            
+                            }/*@END_MENU_TOKEN@*/
+//                            .frame(width: 375, height: 250)
+                                .frame(minHeight: 0, maxHeight: .greatestFiniteMagnitude)
+                        .padding(.leading, 6)
+                        
+                        
+                    
+                    
+                }
+                .frame(width: 375, height: 260)
+                
             
             
                 VStack {
