@@ -32,7 +32,7 @@ struct ScheduleView: View {
     
      func getSection() -> [WeekdaySection]{
         var weekdays: [WeekdaySection] = []
-        var formattedString: String?
+//        var formattedString: String?
         
         let date = Date()
 //        let formatter = DateFormatter()
@@ -140,6 +140,7 @@ struct ScheduleView: View {
             .opacity(showWorkout ? 0 : 1)
             .animation(.easeInOut)
             }
+            
             if showAdd {
                 AddNewWorkoutView(showAdd: $showAdd, showDetail: false)
                     .animation(.easeInOut(duration: 0.2))

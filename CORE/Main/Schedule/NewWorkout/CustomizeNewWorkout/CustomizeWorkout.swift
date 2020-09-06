@@ -34,6 +34,7 @@ struct CustomizeWorkout: View {
         // save changes
         showDetail.toggle()
         showAdd.toggle()
+            
     }
     
     func exit() {
