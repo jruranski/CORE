@@ -10,6 +10,9 @@ import SwiftUI
 struct ProfileView: View {
     
     @Binding var showProfile: Bool
+    var items = ["Profile", "Account", "Settings", "Info", "Contact"]
+    var icons = ["person.circle", "creditcard.circle", "gear", "info.circle", "envelope.circle"]
+    var logos = ["facebook", "instagram", "twitter", "gmail"]
     
     var body: some View {
         
@@ -26,25 +29,48 @@ struct ProfileView: View {
             }
             .padding()
             
+            
+            
+            
             VStack {
-                Image("activityAbsDummy")
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
-                    .frame(width: 150, height: 150, alignment: .center)
-                    .clipShape(Circle())
-                    .shadow(radius: 10)
-                Text("Jack")
-                    .font(.system(size: 32, weight: .bold, design: .rounded))
+                List(items.indices) { item in
+                    HStack {
+                        Image(systemName: icons[item])
+                            .font(.system(size: 28, weight: .light))
+                        Text(items[item])
+                            .font(.system(size: 28, weight: .semibold, design: .rounded))
+                            .padding(8)
+                    }
+                }.padding()
+                .offset(y:50)
             }
-            
-            
-            List(/*@START_MENU_TOKEN@*/0 ..< 5/*@END_MENU_TOKEN@*/) { item in
-                Text("Account")
-                    .font(.system(size: 28, weight: .bold, design: .rounded))
-                    .padding(8)
-            }
+            .frame(width: 350, height: 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+            .background(Color(.systemBackground))
             .clipShape(RoundedRectangle(cornerRadius: 30.0))
             .shadow(radius: 20)
+            .overlay(
+                
+                HStack {
+                    Image("activityAbsDummy")
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        .frame(width: 128, height: 128, alignment: .center)
+                        .clipShape(Circle())
+                    
+                }.offset(y: -200)
+                .shadow(radius: 10)
+            )
+            HStack {
+                ForEach(logos, id: \.self) { logo in
+                    Image(uiImage: UIImage(named: logo) ?? UIImage())
+                        .resizable()
+                        .aspectRatio(contentMode: .fill)
+                        
+                        .frame(width: 48, height: 48, alignment: .center)
+                }
+            }
+            
+            
         }.background(Color(.systemBackground))
     }
 }

@@ -76,8 +76,8 @@ struct HomeView: View {
                     Text("Good morning Jack! You have a workout planned for today, shall we get started?")
                         .padding(.all, 10)
                         .font(.system(size: 16,weight: .medium, design: .rounded))
-                    
-                    
+                        .opacity(0.8)
+                        
                         StartWorkoutCard(showWorkout: $showWorkout)
                         .padding(.vertical, 20)
                     

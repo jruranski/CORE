@@ -52,7 +52,7 @@ struct AddNewWorkoutView: View {
             }
         }
         if showDetail {
-            CustomizeWorkout(showDetail: $showDetail, showAdd: $showAdd)
+            CustomizeWorkout(showDetail: $showDetail, showAdd: $showAdd).environmentObject(MuscleModel())
                 .animation(.easeInOut(duration: 0.2))
                 .transition(.move(edge: .trailing))
         }

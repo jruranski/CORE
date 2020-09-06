@@ -13,6 +13,7 @@
 		3B0A268F24F80D0900F32B04 /* GoalSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A268E24F80D0900F32B04 /* GoalSelectionView.swift */; };
 		3B23301724EBC37F0064E133 /* NumberChangeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B23301624EBC37F0064E133 /* NumberChangeView.swift */; };
 		3B23301924EBF5230064E133 /* DateOpperations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B23301824EBF5230064E133 /* DateOpperations.swift */; };
+		3B4194B62504E04400EB1459 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B4194B52504E04400EB1459 /* MapView.swift */; };
 		3B77B53924E148670063152C /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B77B53824E148670063152C /* TabBar.swift */; };
 		3B7BB76B24E7D72000C627B4 /* CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BB76924E7D72000C627B4 /* CoreData.xcdatamodeld */; };
 		3B7BB76F24E7E11100C627B4 /* BookmarkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B7BB76E24E7E11100C627B4 /* BookmarkView.swift */; };
@@ -91,6 +92,7 @@
 		3B0A268E24F80D0900F32B04 /* GoalSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectionView.swift; sourceTree = "<group>"; };
 		3B23301624EBC37F0064E133 /* NumberChangeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumberChangeView.swift; sourceTree = "<group>"; };
 		3B23301824EBF5230064E133 /* DateOpperations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateOpperations.swift; sourceTree = "<group>"; };
+		3B4194B52504E04400EB1459 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		3B77B53824E148670063152C /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 		3B7BB76A24E7D72000C627B4 /* CoreData.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreData.xcdatamodel; sourceTree = "<group>"; };
 		3B7BB76E24E7E11100C627B4 /* BookmarkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkView.swift; sourceTree = "<group>"; };
@@ -234,6 +236,7 @@
 			children = (
 				3B0A269724F8177800F32B04 /* EquipmentView */,
 				3BE01E1F24CD8B690056D2C0 /* MyPlacesView.swift */,
+				3B4194B52504E04400EB1459 /* MapView.swift */,
 				3B7BB77224E94C4600C627B4 /* AddPlaceView.swift */,
 				3BE01E2124CDCFA30056D2C0 /* MyPlacesBigCard.swift */,
 			);
@@ -622,6 +625,7 @@
 				3B7BB76F24E7E11100C627B4 /* BookmarkView.swift in Sources */,
 				3B7BB76B24E7D72000C627B4 /* CoreData.xcdatamodeld in Sources */,
 				3BC34A2824D2C63400012A8D /* PastWorkoutSummaryCard.swift in Sources */,
+				3B4194B62504E04400EB1459 /* MapView.swift in Sources */,
 				3BE01E3224CF002E0056D2C0 /* PastWorkoutCard.swift in Sources */,
 				3BA256E624C6E4B4007C6CE6 /* Modifiers.swift in Sources */,
 				3B23301724EBC37F0064E133 /* NumberChangeView.swift in Sources */,

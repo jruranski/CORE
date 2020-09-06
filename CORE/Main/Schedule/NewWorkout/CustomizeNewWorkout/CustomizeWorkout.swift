@@ -65,7 +65,7 @@ struct CustomizeWorkout: View {
                     
                 }
                 .padding()
-                .padding(.top, 5)
+                .padding(.top, 30)
                 ScrollView(.horizontal, showsIndicators: false) {
                     
                     
@@ -265,6 +265,6 @@ struct CustomizeWorkout: View {
 struct CustomizeWokrout_Previews: PreviewProvider {
     static var previews: some View {
         CustomizeWorkout(showDetail: .constant(false), showAdd: .constant(false))
-            
+            .environmentObject(MuscleModel())
     }
 }

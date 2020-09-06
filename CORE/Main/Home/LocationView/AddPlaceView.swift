@@ -6,11 +6,13 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct AddPlaceView: View {
     
     @Binding var showAdd: Bool
     @State var titleString: String = ""
+    @State var location = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 56.951924, longitude: 24.125584), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
     var opacity = 0.8
     
     
@@ -68,7 +70,7 @@ struct AddPlaceView: View {
                         Spacer()
                     }.padding(.horizontal)
                     
-                    Rectangle() //mapview
+                    MapView(location: $location) //mapview
                         .frame(width: 350, height: 150, alignment: .center)
                         .cornerRadius(20)
                         .modifier(ShadowModifier())
