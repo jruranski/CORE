@@ -23,7 +23,8 @@ struct DatePickerView: View {
                     }
                     DatePicker("Input your date", selection: $changingDate)
                         .datePickerStyle(GraphicalDatePickerStyle())
-                        .frame(maxHeight: 400)
+                        
+                        .frame(maxWidth: 350, maxHeight: 400)
                     Button(action: {show.toggle() }) {
                         HStack {
                             Text("Done")

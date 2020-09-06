@@ -88,7 +88,9 @@ struct ScheduleView: View {
                                 
                             })
                             
-                            Button(action: {showAdd.toggle()}) {
+                            Button(action: {showAdd.toggle()
+                                print("showAdd")
+                            }) {
                             Image(systemName: "plus")
                                 .renderingMode(.original)
                                 .font(.system(size: 18, weight: .bold, design: .rounded))

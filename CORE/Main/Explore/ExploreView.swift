@@ -24,6 +24,8 @@ struct ExploreView: View {
                                     HStack {
                                         NavigationLink(destination: PresetWorkoutDetail()) {
                                         BigWorkoutCard()
+                                            .padding(.bottom)
+                                            .padding(.bottom)
                                         }.buttonStyle(PlainButtonStyle())
                                     }
                                 }

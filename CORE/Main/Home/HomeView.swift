@@ -12,6 +12,7 @@ struct HomeView: View {
     @State var showProfile: Bool = false
     @State var showLocations: Bool = false
     @State var showWorkout: Bool = false
+    @State var showArticle: Bool = false
     
     var body: some View {
 //        NavigationView {
@@ -24,7 +25,9 @@ struct HomeView: View {
                 //                    .padding()
                                     .font(.system(size: 30, weight: .bold, design: .rounded))
                                 Spacer()
-                                Button(action: {showProfile.toggle()}) {
+                                Button(action: {showProfile.toggle()
+                                    print("showProfile")
+                                }) {
                                 Image(systemName: "person.crop.circle.fill")
                                     .renderingMode(.original)
                                     .font(.system(size: 18))
@@ -35,7 +38,7 @@ struct HomeView: View {
                                     .clipShape(Circle())
                                     .modifier(ShadowModifier())
                                 }.buttonStyle(PlainButtonStyle())
-                                Button(action: {showLocations.toggle()}, label: {
+                                Button(action: {showLocations.toggle()}) {
                                     HStack(spacing: 2) {
                                         Image(systemName: "mappin.circle.fill")
                                             .resizable()
@@ -54,7 +57,7 @@ struct HomeView: View {
                     //                .shadow(color: Color.black.opacity(0.3), radius: 15, y: 6)
                                     .modifier(ShadowModifier())
                                     
-                                })
+                                }
                             }
                             
                             
@@ -74,10 +77,10 @@ struct HomeView: View {
                         .padding(.all, 10)
                         .font(.system(size: 16,weight: .medium, design: .rounded))
                     
-                    Button(action: { showWorkout.toggle()}) {
-                    StartWorkoutCard()
+                    
+                        StartWorkoutCard(showWorkout: $showWorkout)
                         .padding(.vertical, 20)
-                    }.buttonStyle(PlainButtonStyle())
+                    
                     
                     SmallTitle(text: "Recommended", description: "Discover new workouts")
                     
@@ -99,30 +102,33 @@ struct HomeView: View {
                                             perspective: 1.0
                                         )
                                 }
-                                .frame(width: 250, height: 275, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                                .frame(width: 250, height: 275, alignment: .center)
                             }
                         }
                         .padding(.all, 20)
+                        .padding(.top, -20)
                         .padding(.bottom, -40)
                     }
+                    
                     SmallTitle(text: "Learn", description: "Check your progress since last week")
                     
                     VStack {
                         ForEach(1..<4) {_ in
                             HStack(spacing: 20) {
-                                ActivitySmallCard(text: "Exercise Time", numberText: "64MIN/DAY", imageString: "arrowUpFilled", color: #colorLiteral(red: 0.8549019694, green: 0.250980407, blue: 0.4784313738, alpha: 1))
+                                ActivitySmallCard(text: "Exercise Time", numberText: "64MIN/DAY", imageString: "arrowUpFilled", color: #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1))
                                 ActivitySmallCard()
                             }
                         }
                         .padding(.vertical, 5)
                     }
-                    .padding(.vertical, 20)
+                    .padding(.vertical, 10)
                     
                     
                     SmallTitle(text: "Learn", description: "The best techniques and tips from our experts")
                     
+                    Button(action: {showArticle.toggle()}) {
                     ArticleCardView()
-                    
+                    }.buttonStyle(PlainButtonStyle())
                     
                     Spacer()
                     
@@ -131,6 +137,7 @@ struct HomeView: View {
             }.opacity(showProfile ? 0 :1 )
             .opacity(showLocations ? 0 : 1)
             .opacity(showWorkout ? 0 : 1)
+            .opacity(showArticle ? 0 : 1)
             .animation(.linear)
             
             
@@ -147,6 +154,11 @@ struct HomeView: View {
             }
             if showWorkout {
                 WorkoutView(showAdd: false, showWorkout: $showWorkout)
+                    .animation(.easeInOut(duration: 0.2))
+                    .transition(.move(edge: .trailing))
+            }
+            if showArticle {
+                ArticleView(show: $showArticle, articleName: "Cardio alone won't help you lose fat", articleText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc vel porttitor enim, eu maximus lacus. Suspendisse odio mauris, sodales at quam nec, mollis auctor erat. Nulla ut nunc luctus, luctus purus vel, suscipit turpis")
                     .animation(.easeInOut(duration: 0.2))
                     .transition(.move(edge: .trailing))
             }

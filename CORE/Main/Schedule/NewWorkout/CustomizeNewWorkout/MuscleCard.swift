@@ -9,8 +9,11 @@ import SwiftUI
 
 struct MuscleCard: View {
     
-    @State var selected: Bool = false
-    @State var scale: CGFloat = 0.2
+    var title: String = "Chest"
+    var image: String = ""
+    
+    @State private var selected: Bool = false
+    @State private var scale: CGFloat = 0.2
     var body: some View {
         VStack {
             VStack {
@@ -18,7 +21,7 @@ struct MuscleCard: View {
                 Image(systemName: "circle.fill")
                     .padding()
                     .aspectRatio(contentMode: .fit)
-                Text("Chest")
+                Text(title)
                     .font(.system(size: 16, weight: .semibold, design: .rounded))
                     .foregroundColor(selected ? .white : Color(.label))
                     .padding()

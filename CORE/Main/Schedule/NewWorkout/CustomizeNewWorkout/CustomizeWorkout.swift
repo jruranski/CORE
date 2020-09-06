@@ -9,13 +9,18 @@ import SwiftUI
 
 struct CustomizeWorkout: View {
     
+    @EnvironmentObject private var muscle: MuscleModel
+    
     @State var startingDate: Date = Date()
     @State var endingDate: Date = Date().addingTimeInterval(3600)
     @State var showStart: Bool = false
     @State var showEnd: Bool = false
+    @State var showLocation = false
+    @State var goalString: String = "Select Goal"
     
     @Binding var showDetail: Bool
     @Binding var showAdd: Bool
+    
     var opacity = 0.5
     var rows = [
         GridItem(.flexible(minimum: 70, maximum: 130)),
@@ -68,10 +73,10 @@ struct CustomizeWorkout: View {
                         LazyHGrid(rows: rows, alignment: .center) /*@START_MENU_TOKEN@*/{
                                 
                             
-                                ForEach(0..<10) { item in
-                                            
-                                                MuscleCard()
-                                            
+                            ForEach(muscle.muscles.indices, id: \.self) { item in
+                                Button(action: {muscle.muscles[item].selected.toggle()}) {
+                                    MuscleCard(title: muscle.muscles[item].name, image: "")
+                                    }.buttonStyle(PlainButtonStyle())
                                 }
                             
                             
@@ -137,7 +142,7 @@ struct CustomizeWorkout: View {
                     
                     VStack {
                         HStack {
-                            Text("End time:")
+                            Text("Goal:")
                                 .font(.system(size: 16, weight: .medium, design: .rounded))
                                 .opacity(opacity)
                             Spacer()
@@ -145,7 +150,7 @@ struct CustomizeWorkout: View {
                         
                         Button(action: { showEnd.toggle()}) {
                             HStack(alignment: .center) {
-                                Text("TUE, 11:00AM") //change
+                                Text(goalString) //change
                                     .font(.system(size: 18, weight: .bold, design: .rounded))
                                     .frame(alignment: .center)
                                     .opacity(0.3) // change
@@ -168,41 +173,43 @@ struct CustomizeWorkout: View {
                             Spacer()
                         }.padding(.horizontal)
                         
-                        HStack(alignment: .center) {
-                            TextField("GYM", text: $titleString) // change
-                                .font(.system(size: 18, weight: .bold, design: .rounded))
-                                .frame(alignment: .center)
-                            
-                        }
-                        
-                        .padding()
-                        .frame(width: 170, height: 50, alignment: .center)
-                        .background(Color(.systemGroupedBackground))
-                        .cornerRadius(10)
-                    }
-                    
-                    
-                    VStack {
-                        HStack {
-                            Text("Goal:")
-                                .font(.system(size: 16, weight: .medium, design: .rounded))
-                                .opacity(opacity)
-                            Spacer()
-                        }.padding(.horizontal)
-                        
-                        HStack(alignment: .center) {
-                            TextField("600kcal", text: $titleString) //change
-                                .font(.system(size: 18, weight: .bold, design: .rounded))
-                                .frame(alignment: .center)
+                        Button(action: {showLocation.toggle()}) {
+                            HStack(alignment: .center) {
+                                Text("GYM") // change
+                                    .font(.system(size: 18, weight: .bold, design: .rounded))
+                                    .frame(alignment: .center)
+                                    .opacity(0.3)
                                 
-                        }
-                        
-                        .padding()
-                        .frame(width: 170, height: 50, alignment: .center)
-                        .background(Color(.systemGroupedBackground))
-                        .cornerRadius(10)
-                        
+                            }
+                            .padding()
+                            .frame(width: 360, height: 50, alignment: .center)
+                            .background(Color(.systemGroupedBackground))
+                            .cornerRadius(10)
+                        }.buttonStyle(PlainButtonStyle())
                     }
+                    
+                    
+//                    VStack {
+//                        HStack {
+//                            Text("Goal:")
+//                                .font(.system(size: 16, weight: .medium, design: .rounded))
+//                                .opacity(opacity)
+//                            Spacer()
+//                        }.padding(.horizontal)
+//
+//                        HStack(alignment: .center) {
+//                            TextField("600kcal", text: $titleString) //change
+//                                .font(.system(size: 18, weight: .bold, design: .rounded))
+//                                .frame(alignment: .center)
+//
+//                        }
+//
+//                        .padding()
+//                        .frame(width: 170, height: 50, alignment: .center)
+//                        .background(Color(.systemGroupedBackground))
+//                        .cornerRadius(10)
+//
+//                    }
                 }
                 
                 VStack {
@@ -239,17 +246,25 @@ struct CustomizeWorkout: View {
             }
          
             if showEnd {
-                DatePickerView(changingDate: $endingDate, show: $showEnd)
+                GoalSelectionView(calorieString: $goalString, endDate: $endingDate, startDate: $startingDate, showGoal: $showEnd)
                     .animation(.easeInOut)
                     .transition(.opacity)
             }
-            
+            if showLocation {
+                LocationSelectionView(show: $showLocation)
+                    .animation(.easeInOut)
+                    .transition(.opacity)
+            }
         }
+//        .onAppear {
+//            
+//        }
     }
 }
 
 struct CustomizeWokrout_Previews: PreviewProvider {
     static var previews: some View {
         CustomizeWorkout(showDetail: .constant(false), showAdd: .constant(false))
+            
     }
 }

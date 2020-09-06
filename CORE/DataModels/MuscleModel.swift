@@ -17,6 +17,12 @@ struct Muscle {
 
 class MuscleModel: ObservableObject {
     @Published var muscles: [Muscle] = [Muscle(id: 0, name: "Chest", selected: false, image: "chestModelImage")]
+    
+    func setSelected(index: Int) {
+        let state = muscles[index].selected
+        print(state)
+        muscles[index].selected = !state
+    }
 }
 
 

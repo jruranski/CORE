@@ -46,6 +46,7 @@ struct PastWorkoutCard: View {
                     HStack(spacing: 10) {
                         ForEach(1..<5) { _ in
                             InfoSmallCard(category: "Calories Goal", text: "600kcal", image: "flame.fill")
+                                .padding(.top)
                         }
                     }
                                     
