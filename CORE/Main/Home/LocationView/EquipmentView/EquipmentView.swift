@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct Section {
+struct EquipmentSection {
     var name: String
     var equipment: [Equipment]
     
@@ -26,7 +26,7 @@ struct EquipmentView: View {
     var availableEquipment: [String] = []
     var equipment: [Equipment] = appendEquipment() // all items
     
-    var sections: [Section] = []
+    var sections: [EquipmentSection] = []
     
     
     init(show: Binding<Bool>, location: Location) {
@@ -49,9 +49,9 @@ struct EquipmentView: View {
         
     }
     
-    func getSections(eq: [Equipment]) -> [Section] {
+    func getSections(eq: [Equipment]) -> [EquipmentSection] {
         
-        var sections: [Section] = appendSections()
+        var sections: [EquipmentSection] = appendSections()
         for section in sections.indices {
         for i in eq {
             if sections[section].name == i.category {

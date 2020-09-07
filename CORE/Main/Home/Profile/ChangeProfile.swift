@@ -82,6 +82,7 @@ struct ChangeProfile: View {
                             .font(.system(size: 18, weight: .bold, design: .rounded))
                             .frame(alignment: .center)
                             .keyboardType(.numberPad)
+                            
                     }
                     
                     .padding()
@@ -97,6 +98,7 @@ struct ChangeProfile: View {
                     Text("Name:")
                         .font(.system(size: 16, weight: .medium, design: .rounded))
                         .opacity(0.6)
+                        
                     Spacer()
                 }
     //            .padding(.horizontal)

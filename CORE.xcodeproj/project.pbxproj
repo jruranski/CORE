@@ -44,6 +44,9 @@
 		3BA2570324CC37F7007C6CE6 /* ExerciseWorkoutCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2570224CC37F7007C6CE6 /* ExerciseWorkoutCard.swift */; };
 		3BA2570524CC4052007C6CE6 /* WorkoutDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2570424CC4052007C6CE6 /* WorkoutDetail.swift */; };
 		3BA2570724CC4549007C6CE6 /* InfoBigCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BA2570624CC4549007C6CE6 /* InfoBigCard.swift */; };
+		3BB574A62505EC570096A2AF /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB574A52505EC570096A2AF /* SettingsView.swift */; };
+		3BB574A82505F0600096A2AF /* Settings row.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB574A72505F0600096A2AF /* Settings row.swift */; };
+		3BB574AB2505F9650096A2AF /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BB574AA2505F9650096A2AF /* ContactView.swift */; };
 		3BC34A2424D162DF00012A8D /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC34A2324D162DF00012A8D /* ProfileView.swift */; };
 		3BC34A2624D1775800012A8D /* PastWorkoutDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC34A2524D1775800012A8D /* PastWorkoutDetail.swift */; };
 		3BC34A2824D2C63400012A8D /* PastWorkoutSummaryCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BC34A2724D2C63400012A8D /* PastWorkoutSummaryCard.swift */; };
@@ -130,6 +133,9 @@
 		3BA2570224CC37F7007C6CE6 /* ExerciseWorkoutCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseWorkoutCard.swift; sourceTree = "<group>"; };
 		3BA2570424CC4052007C6CE6 /* WorkoutDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetail.swift; sourceTree = "<group>"; };
 		3BA2570624CC4549007C6CE6 /* InfoBigCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoBigCard.swift; sourceTree = "<group>"; };
+		3BB574A52505EC570096A2AF /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		3BB574A72505F0600096A2AF /* Settings row.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Settings row.swift"; sourceTree = "<group>"; };
+		3BB574AA2505F9650096A2AF /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		3BC34A2324D162DF00012A8D /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		3BC34A2524D1775800012A8D /* PastWorkoutDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastWorkoutDetail.swift; sourceTree = "<group>"; };
 		3BC34A2724D2C63400012A8D /* PastWorkoutSummaryCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastWorkoutSummaryCard.swift; sourceTree = "<group>"; };
@@ -276,6 +282,8 @@
 			isa = PBXGroup;
 			children = (
 				3BC34A2324D162DF00012A8D /* ProfileView.swift */,
+				3BB574AA2505F9650096A2AF /* ContactView.swift */,
+				3BB574A92505F94C0096A2AF /* Settings */,
 				3BF7DA7025057A5600AE2760 /* ChangeProfile.swift */,
 			);
 			path = Profile;
@@ -452,6 +460,15 @@
 			path = Main;
 			sourceTree = "<group>";
 		};
+		3BB574A92505F94C0096A2AF /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				3BB574A52505EC570096A2AF /* SettingsView.swift */,
+				3BB574A72505F0600096A2AF /* Settings row.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -586,6 +603,7 @@
 				3BA2570324CC37F7007C6CE6 /* ExerciseWorkoutCard.swift in Sources */,
 				3BE01E1824CC5BC60056D2C0 /* AddNewWorkoutView.swift in Sources */,
 				3B7BB77324E94C4600C627B4 /* AddPlaceView.swift in Sources */,
+				3BB574AB2505F9650096A2AF /* ContactView.swift in Sources */,
 				3BA256EA24C6E8B1007C6CE6 /* SmallTitle.swift in Sources */,
 				3BA256F924CAC047007C6CE6 /* InfoSmallCard.swift in Sources */,
 				3BA256F224C8BCE4007C6CE6 /* ExploreView.swift in Sources */,
@@ -599,6 +617,7 @@
 				3BE01E3824CF122F0056D2C0 /* PresetExerciseRow.swift in Sources */,
 				3BC34A2A24D6C63600012A8D /* CustomizeWorkout.swift in Sources */,
 				3B0A268F24F80D0900F32B04 /* GoalSelectionView.swift in Sources */,
+				3BB574A62505EC570096A2AF /* SettingsView.swift in Sources */,
 				3BE01E1C24CC66E60056D2C0 /* ExerciseDetail.swift in Sources */,
 				3BA2570124CAEA4C007C6CE6 /* WorkoutSummaryCard.swift in Sources */,
 				3B77B53924E148670063152C /* TabBar.swift in Sources */,
@@ -618,6 +637,7 @@
 				3B0A268A24F80AFD00F32B04 /* MuscleModel.swift in Sources */,
 				3BA256E824C6E65E007C6CE6 /* StartWorkoutCard.swift in Sources */,
 				3BA256EE24C736A1007C6CE6 /* ActivitySmallCard.swift in Sources */,
+				3BB574A82505F0600096A2AF /* Settings row.swift in Sources */,
 				3BA2570524CC4052007C6CE6 /* WorkoutDetail.swift in Sources */,
 				3BA256F424C8D199007C6CE6 /* BigWorkoutCard.swift in Sources */,
 				3BE01E2A24CEDF8E0056D2C0 /* ActivityView.swift in Sources */,

@@ -43,10 +43,10 @@ func appendEquipment() -> [Equipment] {
 }
 
 
-func appendSections() -> [Section] {
-    let sections: [Section] = [
+func appendSections() -> [EquipmentSection] {
+    let sections: [EquipmentSection] = [
     
-    Section(name: "Bars", equipment: [])
+    EquipmentSection(name: "Bars", equipment: [])
     
     ]
     
