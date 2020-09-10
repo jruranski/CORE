@@ -101,7 +101,7 @@ struct ProfileView: View {
                             .aspectRatio(contentMode: .fill)
                             .frame(width: 128, height: 128, alignment: .center)
                             .clipShape(Circle())
-                            .animation(nil)
+                            
                         
                     }.offset(y: -200)
                     .shadow(radius: 10)

@@ -106,7 +106,7 @@ struct MyPlacesView: View {
             .animation(.linear)
         
         if showEquipment {
-            EquipmentView(show: $showEquipment, location: location!)
+            EquipmentView(show: $showEquipment)
                 .animation(.easeInOut(duration: 0.2))
                 .transition(.move(edge: .trailing))
         }

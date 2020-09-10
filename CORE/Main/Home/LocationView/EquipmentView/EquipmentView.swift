@@ -7,18 +7,14 @@
 
 import SwiftUI
 
-struct EquipmentSection {
-    var name: String
-    var equipment: [Equipment]
-    
-    
-    
-    
-}
+
 
 
 
 struct EquipmentView: View {
+    
+    
+    @EnvironmentObject private var model: EquipmentModel
     
     @Binding var show: Bool
     
@@ -29,25 +25,27 @@ struct EquipmentView: View {
     var sections: [EquipmentSection] = []
     
     
-    init(show: Binding<Bool>, location: Location) {
-        equipmentString = location.equipment ?? ""
-        self._show = show
-        
-        
-        // get items from string and then add to availableEquipment
-        
-        
-        for index in equipment.indices {
-        for i in availableEquipment {
-            if i == equipment[index].name {
-                equipment[index].isPresent = true
-            }
-        }
-        }
-        
-        sections = getSections(eq: equipment)
-        
-    }
+//    init(show: Binding<Bool>, location: Location) {
+//        equipmentString = location.equipment ?? ""
+//        self._show = show
+//
+//
+//        // get items from string and then add to availableEquipment
+//
+//
+//        for index in equipment.indices {
+//        for i in availableEquipment {
+//            if i == equipment[index].name {
+//                equipment[index].isPresent = true
+//            }
+//        }
+//        }
+//
+//        sections = getSections(eq: equipment)
+//
+//    }
+    
+    
     
     func getSections(eq: [Equipment]) -> [EquipmentSection] {
         
@@ -84,23 +82,26 @@ struct EquipmentView: View {
                 .padding(.horizontal, 10)
                 .padding(.leading , 14)
                 .padding(.top, 30)
-                
+                ForEach(model.sections, id: \.name) { section in
                 HStack {
-                    Text("Bars")
+                    Text(section.name)
                         .font(.system(size: 28, weight: .bold, design: .rounded))
                         .opacity(0.5)
                         .padding(.leading, 24)
+                        .padding(.top)
                     Spacer()
                 }
                 LazyVGrid(columns: columns, alignment: .center) /*@START_MENU_TOKEN@*/{
-                    
-                    EquipmentCard()
-                    EquipmentCard()
-                    EquipmentCard()
+                    ForEach(section.equipment, id: \.name) { equipment in
+                        EquipmentCard(title: equipment.name, select: equipment.isPresent)
+                            
+                            
+                    }
                     
                 }/*@END_MENU_TOKEN@*/
-                
+                .padding(.horizontal)
                 Spacer()
+            }
             }
         }
         .background(Color(.systemBackground))
@@ -117,6 +118,7 @@ struct EquipmentView: View {
 
 struct EquipmentView_Previews: PreviewProvider {
     static var previews: some View {
-        EquipmentView(show: .constant(true), location: .init())
+        EquipmentView(show: .constant(true))
+            .environmentObject(EquipmentModel(available: "Barbell;Dumbbells"))
     }
 }
