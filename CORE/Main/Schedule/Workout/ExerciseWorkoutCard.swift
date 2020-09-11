@@ -8,6 +8,10 @@
 import SwiftUI
 
 struct ExerciseWorkoutCard: View {
+    
+    @Binding var press: Bool
+    
+    
     var body: some View {
         ZStack {
             
@@ -46,7 +50,7 @@ struct ExerciseWorkoutCard: View {
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
                             ForEach(1..<5) { _ in
-                                InfoSmallCard(category: "Calories Goal", text: "600kcal", image: "flame.fill")
+                                InfoSmallCard(category: "Calories Goal", text: "600kcal", image: "flame.fill", press: $press)
                             }
                         }
                                         
@@ -71,6 +75,6 @@ struct ExerciseWorkoutCard: View {
 
 struct ExerciseWorkoutCard_Previews: PreviewProvider {
     static var previews: some View {
-        ExerciseWorkoutCard()
+        ExerciseWorkoutCard(press: .constant(false))
     }
 }

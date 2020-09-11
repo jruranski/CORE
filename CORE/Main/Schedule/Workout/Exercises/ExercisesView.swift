@@ -10,7 +10,7 @@ import SwiftUI
 struct ExercisesView: View {
     
     @State var showDetail: Bool = false
-    
+    @State var press: Bool = false
     var body: some View {
         
             
@@ -22,7 +22,7 @@ struct ExercisesView: View {
                     ScrollView(.horizontal, showsIndicators: false) {  // change
                         HStack {
                             ForEach(1..<4) { _ in
-                                InfoSmallCard() //change
+                                InfoSmallCard(press: $press) //change
                             }
                         }
                         .padding(.all, 10)

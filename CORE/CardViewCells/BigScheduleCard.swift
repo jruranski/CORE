@@ -11,6 +11,7 @@ struct BigScheduleCard: View {
     
     var accentColor: Color = Color(#colorLiteral(red: 0, green: 0.7494170666, blue: 0.811537087, alpha: 1))
     
+    @Binding var press: Bool
     
     var body: some View {
         VStack {
@@ -42,7 +43,7 @@ struct BigScheduleCard: View {
             ScrollView(.horizontal, showsIndicators: false) {
                 HStack(spacing: 10) {
                     ForEach(1..<5) { _ in
-                        InfoSmallCard(category: "Calories Goal", text: "600kcal", image: "flame.fill")
+                        InfoSmallCard(category: "Calories Goal", text: "600kcal", image: "flame.fill", press: $press)
                             .padding(.top)
                     }
                 }
@@ -68,6 +69,6 @@ struct BigScheduleCard: View {
 
 struct BigScheduleCard_Previews: PreviewProvider {
     static var previews: some View {
-        BigScheduleCard()
+        BigScheduleCard(press: .constant(false))
     }
 }

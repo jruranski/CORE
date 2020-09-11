@@ -8,31 +8,42 @@
 import SwiftUI
 
 struct ActivityView: View {
+    
+    @State var press: Bool = false
+    
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack(spacing: 30) {
-                    ActivityCard()
-                    VStack(spacing: 0) {
-                    ActivitySeparator()
-                        .padding(.bottom, 10)
-                        .padding(.top, 10)
-                        VStack(spacing: 20) {
-                            NavigationLink(
-                                destination: PastWorkoutDetail()) {
-                    PastWorkoutCard()
-                            }.buttonStyle(PlainButtonStyle())
-                        .padding(.bottom, 10)
-                        PastWorkoutCard()
+        ZStack {
+            NavigationView {
+                ScrollView {
+                    VStack(spacing: 30) {
+                        ActivityCard()
+                        VStack(spacing: 0) {
+                        ActivitySeparator()
+                            .padding(.bottom, 10)
+                            .padding(.top, 10)
+                            VStack(spacing: 20) {
+                                NavigationLink(
+                                    destination: PastWorkoutDetail()) {
+                                    PastWorkoutCard(show: $press)
+                                }.buttonStyle(PlainButtonStyle())
+                            .padding(.bottom, 10)
+                                PastWorkoutCard(show: $press)
+                            }
                         }
                     }
+                    .padding(.top, 30)
                 }
-                .padding(.top, 30)
+                .onAppear {
+                    UITableView.appearance().separatorStyle = .none
             }
-            .onAppear {
-                UITableView.appearance().separatorStyle = .none
-        }
-            .navigationBarTitle(Text("Activity"))
+                .navigationBarTitle(Text("Activity"))
+            }
+            if press {
+                ExpandedInfoCard(press: $press)
+                    .transition(.move(edge: .bottom))
+                    .animation(.spring(response: 0.6, dampingFraction: 0.4, blendDuration: 0))
+            }
+            
         }
     }
 }

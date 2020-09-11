@@ -28,7 +28,7 @@ struct ScheduleView: View {
     var weekdays: [WeekdaySection] = []
     @State var showAdd: Bool = false
     @State var showWorkout: Bool = false
-    
+    @State var press: Bool = false
     
      func getSection() -> [WeekdaySection]{
         var weekdays: [WeekdaySection] = []
@@ -127,7 +127,7 @@ struct ScheduleView: View {
                 .padding(.leading, 14)
                         ForEach(weekday.workouts) { workout in
                 Button(action: { showWorkout.toggle()}) {
-                    BigScheduleCard()
+                    BigScheduleCard(press: $press)
                 }
                 .buttonStyle(PlainButtonStyle())
                         }

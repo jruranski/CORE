@@ -12,6 +12,7 @@ struct WorkoutView: View {
     @State var workoutRunning: Bool = false
     @State var showDetail: Bool = false
     @State var showAdd: Bool
+    @State var press: Bool = false
     @Binding var showWorkout: Bool
     
     
@@ -31,7 +32,7 @@ struct WorkoutView: View {
                         }
 //                        ForEach((workout?.exercises)!) { exercise in
                         Button(action: {showDetail.toggle()}) {
-                        ExerciseWorkoutCard()
+                            ExerciseWorkoutCard(press: $press)
                         }.buttonStyle(PlainButtonStyle())
 //                        }
                         Spacer()
