@@ -15,6 +15,8 @@ struct AddPlaceView: View {
     @State var titleString: String = ""
     @State var location = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 56.951924, longitude: 24.125584), span: MKCoordinateSpan(latitudeDelta: 0.02, longitudeDelta: 0.02))
     @State var equipmentString: String = "Barbell;Dumbbell"
+    @State var showOptions: Bool = false
+    @State var bottomState = CGSize.zero
     
     var opacity = 0.8
     
@@ -89,7 +91,7 @@ struct AddPlaceView: View {
                             Spacer()
                         }.padding(.horizontal)
                         
-                        Button(action: {showEq.toggle()}) {
+                        Button(action: {showOptions.toggle()}) {
                             VStack {
                                 Text("Select Equipment")
                                     .font(.system(size: 18, weight: .bold, design: .rounded))
@@ -98,7 +100,7 @@ struct AddPlaceView: View {
                             .background(Color(.systemBackground))
                             .cornerRadius(20)
                             .modifier(ShadowModifier())
-                        }
+                        }.buttonStyle(PlainButtonStyle())
                         
                         
                     }
@@ -121,6 +123,51 @@ struct AddPlaceView: View {
                    
                 }
             }
+            
+            
+                OptionsView(showOptions: $showOptions, eqString: $equipmentString, showEq: $showEq)
+                    .offset(y: showOptions ? 200 : 1000)
+                    .offset(y: self.bottomState.height)
+                    .transition(.move(edge: .bottom))
+                    .animation(.timingCurve(0.2, 0.8, 0.2, 1, duration: 0.8))
+                    .gesture(
+                    DragGesture()
+                        .onChanged {value in
+//                            self.bottomState = value.translation
+//                            if self.showOptions {
+//                                self.bottomState.height += -300
+//                            }
+                            
+                            self.bottomState = value.translation
+                            if bottomState.height < -100 {
+                            self.bottomState = .zero
+                            }
+                            
+                        }
+                        .onEnded {value in
+                            if bottomState.height < -100 {
+                            self.bottomState = .zero
+                            }
+                            
+                            if bottomState.height > 50 {
+                                self.bottomState = .zero
+                                self.showOptions = false
+                            }
+//                            if (self.bottomState.height < -100 && !self.showOptions) || (self.bottomState.height < -250 && self.showOptions) {
+//                                self.bottomState.height = -300
+//                                self.showOptions = true
+//                            }else{
+//                                self.bottomState = .zero
+//                                self.showOptions = false
+//                            }
+//
+//                            if self.bottomState.height < -300 {
+//                                self.bottomState = .zero
+//                            }
+                        }
+                    )
+            
+            
             
             if showEq {
                 EquipmentView(show: $showEq).environmentObject(EquipmentModel(available: equipmentString))

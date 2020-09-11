@@ -55,6 +55,7 @@
 		3BDF2046250A34D5004E119F /* LocationPicker in Resources */ = {isa = PBXBuildFile; fileRef = 3BDF2045250A34D5004E119F /* LocationPicker */; };
 		3BDF2048250A354D004E119F /* MapSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF2047250A354D004E119F /* MapSelection.swift */; };
 		3BDF204A250B6A09004E119F /* ExpandedInfoCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF2049250B6A09004E119F /* ExpandedInfoCard.swift */; };
+		3BDF204C250B734D004E119F /* OptionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BDF204B250B734D004E119F /* OptionsView.swift */; };
 		3BE01E1624CC4B090056D2C0 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE01E1524CC4B090056D2C0 /* Extensions.swift */; };
 		3BE01E1824CC5BC60056D2C0 /* AddNewWorkoutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE01E1724CC5BC60056D2C0 /* AddNewWorkoutView.swift */; };
 		3BE01E1A24CC618D0056D2C0 /* ExercisesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BE01E1924CC618C0056D2C0 /* ExercisesView.swift */; };
@@ -147,6 +148,7 @@
 		3BDF2045250A34D5004E119F /* LocationPicker */ = {isa = PBXFileReference; lastKnownFileType = folder; path = LocationPicker; sourceTree = "<group>"; };
 		3BDF2047250A354D004E119F /* MapSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSelection.swift; sourceTree = "<group>"; };
 		3BDF2049250B6A09004E119F /* ExpandedInfoCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandedInfoCard.swift; sourceTree = "<group>"; };
+		3BDF204B250B734D004E119F /* OptionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsView.swift; sourceTree = "<group>"; };
 		3BE01E1524CC4B090056D2C0 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3BE01E1724CC5BC60056D2C0 /* AddNewWorkoutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNewWorkoutView.swift; sourceTree = "<group>"; };
 		3BE01E1924CC618C0056D2C0 /* ExercisesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesView.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 				3BE01E1F24CD8B690056D2C0 /* MyPlacesView.swift */,
 				3B4194B52504E04400EB1459 /* MapView.swift */,
 				3B7BB77224E94C4600C627B4 /* AddPlaceView.swift */,
+				3BDF204B250B734D004E119F /* OptionsView.swift */,
 				3BE01E2124CDCFA30056D2C0 /* MyPlacesBigCard.swift */,
 			);
 			path = LocationView;
@@ -651,6 +654,7 @@
 				3BB574A82505F0600096A2AF /* Settings row.swift in Sources */,
 				3BA2570524CC4052007C6CE6 /* WorkoutDetail.swift in Sources */,
 				3BA256F424C8D199007C6CE6 /* BigWorkoutCard.swift in Sources */,
+				3BDF204C250B734D004E119F /* OptionsView.swift in Sources */,
 				3BE01E2A24CEDF8E0056D2C0 /* ActivityView.swift in Sources */,
 				3BE01E1624CC4B090056D2C0 /* Extensions.swift in Sources */,
 				3BA256BD24C48040007C6CE6 /* HomeView.swift in Sources */,
