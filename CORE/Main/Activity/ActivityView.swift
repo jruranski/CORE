@@ -28,13 +28,15 @@ struct ActivityView: View {
                         ActivitySeparator()
                             .padding(.bottom, 10)
                             .padding(.top, 10)
-                            VStack(spacing: 20) {
-                                NavigationLink(
-                                    destination: PastWorkoutDetail()) {
-                                    PastWorkoutCard(show: $press)
-                                }.buttonStyle(PlainButtonStyle())
-                            .padding(.bottom, 10)
-                                PastWorkoutCard(show: $press)
+                            ForEach(workouts) { workout in
+                                LazyVStack(spacing: 20) {
+                                    NavigationLink(
+                                        destination: PastWorkoutDetail()) {
+                                        PastWorkoutCard(show: $press, workout: workout)
+                                    }.buttonStyle(PlainButtonStyle())
+                                .padding(.bottom, 30)
+                                    
+                                }
                             }
                         }
                     }
@@ -58,5 +60,6 @@ struct ActivityView: View {
 struct ActivityView_Previews: PreviewProvider {
     static var previews: some View {
         ActivityView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

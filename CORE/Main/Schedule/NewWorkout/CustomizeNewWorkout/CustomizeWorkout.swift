@@ -21,6 +21,8 @@ struct CustomizeWorkout: View {
     
     @Binding var showDetail: Bool
     @Binding var showAdd: Bool
+    @Binding var selectedOption: String
+    
     
     var opacity = 0.5
     var rows = [
@@ -281,7 +283,7 @@ struct CustomizeWorkout: View {
 
 struct CustomizeWokrout_Previews: PreviewProvider {
     static var previews: some View {
-        CustomizeWorkout(showDetail: .constant(false), showAdd: .constant(false))
+        CustomizeWorkout(showDetail: .constant(false), showAdd: .constant(false), selectedOption: .constant(""))
             .environmentObject(MuscleModel())
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }

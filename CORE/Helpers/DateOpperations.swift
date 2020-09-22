@@ -82,6 +82,17 @@ func formatDuration(duration: Int32) -> String {
     return "45min"
 }
 
+func formatDateActivity(date: Date) -> String {
+    var formattedString: String?
+    let formatter = DateFormatter()
+    let dateFormatterTemplate = DateFormatter.dateFormat(fromTemplate: "d MMM", options: 0, locale: NSLocale.autoupdatingCurrent)
+    
+    formatter.dateFormat = dateFormatterTemplate
+    formattedString = formatter.string(from: date)
+    
+    return formattedString ?? "14APR"
+}
+
 extension Date {
     
     static func - (lhs: Date, rhs: Date) -> TimeInterval {

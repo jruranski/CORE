@@ -24,6 +24,9 @@ struct ExercisesView: View {
     @State var press: Bool = false
     @State var searchText: String = ""
     
+    var workout: Workout?
+    
+    
     var body: some View {
         
             
@@ -34,9 +37,11 @@ struct ExercisesView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {  // change
                         HStack {
-                            ForEach(1..<4) { _ in
-//                                InfoSmallCard(category: "", text: <#T##String#>, image: <#T##String#>, color: <#T##Color#>, tap: <#T##Bool#>, changeText: <#T##String#>, press: <#T##Binding<Bool>#>)
-                            }
+                            
+                                InfoSmallCard(category: "Muscle Group", text: "Chest", image: "", color: Color(.systemTeal), press: $press)
+                                InfoSmallCard(category: "Exercise type", text: "Compound", image: "", color: Color(.systemPurple), press: $press)
+                                InfoSmallCard(category: "Equipment", text: "Chest", image: "", color: Color(.systemGreen), press: $press)
+                            
                         }
                         .padding(.all, 10)
                         .padding(.bottom, 20)
@@ -49,9 +54,11 @@ struct ExercisesView: View {
                         Spacer()
                     }.padding(.leading)
                     
+                ForEach(exercises) { exercise in
                     Button(action: { showDetail.toggle()}) {
-                        ExercisesCard()
+                        ExercisesCard(exercise: exercise)
                     }.buttonStyle(PlainButtonStyle())
+                }
                     
                     Spacer()
             }.opacity(showDetail ? 0 : 1)

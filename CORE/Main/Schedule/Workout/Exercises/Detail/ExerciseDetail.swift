@@ -8,16 +8,19 @@
 import SwiftUI
 
 struct ExerciseDetail: View {
+    @Environment(\.managedObjectContext) var managedObjectContext
     
     @Binding var showDetail: Bool
     
+    var exercise: Exercise?
+    var workout: Workout?
     
     var body: some View {
         ZStack {
             
             ZStack {
                 VStack {
-                    Image("activityAbsDummy")
+                    Image(exercise?.gifName ?? "activityAbsDummy")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 375, height: 300, alignment: .center)
@@ -72,28 +75,29 @@ struct ExerciseDetail: View {
                     
                     Spacer()
                     
-                    Text("Squats")
+                    Text(exercise?.name ?? "Squats")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
                     
                     .padding(.horizontal, 16)
-                    
-                    Text("Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.")
+                    Divider()
+                        .opacity(0)
+                    Text(exercise?.instructions ?? "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod.")
                         .font(.system(size: 14, weight: .regular, design: .rounded))
                         .padding(.horizontal, 10)
                     Spacer()
                     
                     VStack(spacing: 10) {
                     HStack(spacing: 10) {
-                        InfoBigCard()
+                        InfoBigCard(category: "Sets", text: "\(exercise?.sets ?? 4)", color: Color(.systemOrange))
                         Spacer()
-                        InfoBigCard(category: "Reps", text: "12")
+                        InfoBigCard(category: "Reps", text: "\(exercise?.reps ?? 12)", color: Color(.systemRed))
                         Spacer()
-                        InfoBigCard(category: "Weight", text: "50kg")
+                        InfoBigCard(category: "Weight", text: "\(Int(exercise?.weight ?? 50))kg", color: Color(.systemBlue))
                     }
                     .padding(.horizontal, 20)
                     
                     
-                    Button(action: {}) {
+                    Button(action: {addToWorkout()}) {
                         VStack {
                             Text("Add to my workout")
                                 .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -127,6 +131,21 @@ struct ExerciseDetail: View {
         }.background(Color(.systemBackground))
     
     }
+    
+    func addToWorkout() {
+        if let exer = exercise {
+        workout?.addToExercises(exer)
+        }
+        
+        do{
+            try self.managedObjectContext.save()
+        }catch{
+            print(error.localizedDescription)
+        }
+        
+        self.showDetail.toggle()
+    }
+    
 }
 
 struct ExerciseDetail_Previews: PreviewProvider {

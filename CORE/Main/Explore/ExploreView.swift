@@ -17,7 +17,14 @@ struct ExploreView: View {
     @FetchRequest(entity: Preset.entity(), sortDescriptors: []) private var presets: FetchedResults<Preset>
     
     @State var showBookmarks: Bool = false
+    @State var isLoading: Bool = true
     
+    
+    func load() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) {
+        self.isLoading = false
+        }
+    }
     var body: some View {
         ZStack {
             NavigationView {
@@ -105,13 +112,17 @@ struct ExploreView: View {
         //                                    .offset(x: 0, y: 47)
                                             }.buttonStyle(PlainButtonStyle())
                 )
-                }
-            }.opacity(showBookmarks ? 0 : 1)
+                }.redacted(reason: .placeholder)
+            }
+            .opacity(showBookmarks ? 0 : 1)
             .animation(.linear)
             
             
             
             
+        }
+        .onAppear {
+            load()
         }
         .animation(nil)
     }

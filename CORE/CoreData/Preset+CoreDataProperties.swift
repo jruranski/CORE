@@ -24,6 +24,14 @@ extension Preset {
     @NSManaged public var saved: Bool
     @NSManaged public var presetExercises: NSOrderedSet?
 
+    
+    public var exercisesArray: [Exercise] {
+        let set = presetExercises?.array as? [Exercise] ?? []
+        
+        
+        return set
+    }
+    
 }
 
 // MARK: Generated accessors for presetExercises

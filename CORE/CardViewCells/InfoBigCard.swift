@@ -11,7 +11,7 @@ struct InfoBigCard: View {
     
     var category = "Sets"
     var text = "4"
-    
+    var color = Color(.systemRed)
     var body: some View {
         VStack(alignment: .leading, spacing: 2) {
             HStack(spacing: 2) {
@@ -19,7 +19,7 @@ struct InfoBigCard: View {
                 Text(category)
                     .font(.system(size: 18, weight: .semibold, design: .rounded))
             }
-            .foregroundColor(.red)
+            .foregroundColor(color)
             
 //            Divider()
             Text(text)

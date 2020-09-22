@@ -12,6 +12,7 @@ struct AddNewWorkoutView: View {
     
     @Binding var showAdd: Bool
     @State var showDetail: Bool = false
+    @State var selectedOption: String = "AI Workout"
     
     var cards: [AddNewCard] = [
         AddNewCard(title: "AI Workout", subtitle: "The app will create a workout customized just for you!", image: "aiRobotCard", logo: Image(systemName: "rectangle.stack.badge.person.crop"), startingColor: #colorLiteral(red: 0.8269839287, green: 0.1021612361, blue: 0.4810593128, alpha: 1), endColor: #colorLiteral(red: 1, green: 0.1502068937, blue: 0.3223169446, alpha: 1)),
@@ -39,7 +40,11 @@ struct AddNewWorkoutView: View {
                     
                     ForEach(cards, id: \.title) { item in
                         VStack {
-                            Button(action: {showDetail.toggle()}) {
+                            Button(action: {
+                                selectedOption = item.title
+                                    showDetail.toggle()
+                                
+                            }) {
                                 BigWorkoutCard(title: item.title, subtitle: item.subtitle, image: item.image, logo: item.logo, startingColor: item.startingColor, endColor: item.endColor)
                                 
                             }.buttonStyle(PlainButtonStyle())
@@ -53,7 +58,7 @@ struct AddNewWorkoutView: View {
             }
         }
         if showDetail {
-            CustomizeWorkout(showDetail: $showDetail, showAdd: $showAdd).environmentObject(MuscleModel())
+            CustomizeWorkout(showDetail: $showDetail, showAdd: $showAdd, selectedOption: $selectedOption).environmentObject(MuscleModel())
                 .environment(\.managedObjectContext, managedObjectContext)
                 .animation(.easeInOut(duration: 0.2))
                 .transition(.move(edge: .trailing))

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct PresetWorkoutDetail: View {
-    
-    
+    @Environment(\.managedObjectContext) var managedObjectContext
+    var preset: Preset?
     
     var body: some View {
         ScrollView {
@@ -17,7 +17,7 @@ struct PresetWorkoutDetail: View {
                 VStack(alignment: .leading, spacing: 6) {
                     Text("What to know")
                         .font(.system(size: 24, weight: .bold, design: .rounded))
-                    Text("Good morning Jack! You have a workout planned for today, shall we get started?")
+                    Text(preset?.longText ?? "Good morning Jack! You have a workout planned for today, shall we get started?")
                         .font(.system(size: 16, weight: .regular, design: .rounded))
                 }
                 .padding(.leading, 16)
@@ -40,11 +40,11 @@ struct PresetWorkoutDetail: View {
                 .padding(.leading, 26)
                 
                 
-                    ForEach(1..<10) { _ in
+                ForEach(preset!.exercisesArray) { _ in
                         PresetExerciseRow()
                 }
                 
-                .navigationBarTitle(Text("Workout name"))
+                .navigationBarTitle(Text(preset?.name ?? "Workout name"))
                     .navigationBarItems(trailing:
                     
                                             HStack(spacing: 10) {
@@ -75,5 +75,6 @@ struct PresetWorkoutDetail: View {
 struct PresetWorkoutDetail_Previews: PreviewProvider {
     static var previews: some View {
         PresetWorkoutDetail()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

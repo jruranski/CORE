@@ -28,7 +28,7 @@ struct WorkoutDetail: View {
             ZStack {
             ZStack {
                 VStack {
-                    Image("activityAbsDummy")
+                    Image(exercise?.gifName ?? "activityAbsDummy")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
                         .frame(width: 375, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -83,27 +83,27 @@ struct WorkoutDetail: View {
                     
                     Spacer()
                     
-                    Text("Squats")
+                    Text(exercise?.name ?? "Squats")
                         .font(.system(size: 28, weight: .bold, design: .rounded))
                     HStack(spacing: 10) {
                         Button(action: {setShow.toggle()}) {
-                        InfoBigCard(category: "Sets", text: setString)
+                            InfoBigCard(category: "Sets", text: setString, color: Color(.systemOrange))
                         }.buttonStyle(PlainButtonStyle())
                         Spacer()
                         Button(action: { repsShow.toggle()}) {
-                            InfoBigCard(category: "Reps", text: repsString)
+                            InfoBigCard(category: "Reps", text: repsString, color: Color(.systemRed))
                         }.buttonStyle(PlainButtonStyle())
                         Spacer()
                         
                         Button(action:{ weightShow.toggle()}){
-                            InfoBigCard(category: "Weight", text: "\(weightString)kg")
+                            InfoBigCard(category: "Weight", text: "\(weightString)kg", color: Color(.systemBlue))
                         }.buttonStyle(PlainButtonStyle())                    }
                     .padding(.horizontal, 16)
                     
                     WorkoutSummaryCard()
                     
                     
-                    Button(action: {}) {
+                    Button(action: {setCompleted()}) {
                         VStack {
                             Text("SET COMPLETED")
                                 .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -151,6 +151,11 @@ struct WorkoutDetail: View {
             
         }
     
+    }
+    
+    
+    func setCompleted() {
+        
     }
 }
 

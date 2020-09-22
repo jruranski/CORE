@@ -11,11 +11,13 @@ struct PastWorkoutCard: View {
     var accentColor: Color = Color(#colorLiteral(red: 0, green: 0.7494170666, blue: 0.811537087, alpha: 1))
     
     @Binding var show: Bool
+    @State var press: Bool = false
+    var workout: Workout?
     
     var body: some View {     
         ZStack {
             HStack(spacing: 16) {
-                Text("14APR")
+                Text(formatDateActivity(date: workout?.startDate ?? Date()))
                     .font(.system(size: 14, weight: .bold, design: .rounded))
                     
                 VStack {
@@ -39,17 +41,25 @@ struct PastWorkoutCard: View {
                     .padding(.top, 10)
                     
                     
-                    Text("Full body workout")
+                    Text(workout?.name ?? "Full body workout")
                         .font(.system(size: 24, weight: .bold, design: .rounded))
                 }
                 .padding(.bottom, -20)
                 .padding(.horizontal, 10)
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
-                            ForEach(1..<5) { _ in
-                                InfoSmallCard(category: "Calories Goal", text: "600kcal", image: "flame.fill", press:  $show )
+                            InfoSmallCard(category: "Start Time", text: formatTime(date: workout?.startDate ?? Date()), image: "clock",color: Color(.systemBlue), press: $press)
                                     .padding(.top)
-                            }
+                            InfoSmallCard(category: "Location", text: workout?.location?.name ?? "Gym", image: "mappin",color: Color(.systemGreen), press: $press)
+                                    .padding(.top)
+                            InfoSmallCard(category: "Exercises", text: "\(workout?.exercises?.count ?? 0)" , image: "list.number",color: Color(.systemYellow), press: $press)
+                                    .padding(.top)
+                            InfoSmallCard(category: "Duration", text: formatDuration(duration: workout?.duration ?? 0) , image: "hourglass",color: Color(.systemOrange), press: $press)
+                                    .padding(.top)
+                            InfoSmallCard(category: "Calorie Goal", text: "\(workout?.calories ?? 0)kcal" , image: "flame.fill",color: Color(.systemRed), press: $press)
+                                    .padding(.top)
+                            InfoSmallCard(category: "Finish Time", text: formatTime(date: workout?.endDate ?? Date().addingTimeInterval(3600)) , image: "clock.fill",color: Color(.systemIndigo), press: $press)
+                                    .padding(.top)
                         }
                                         
         //                .frame(width: 350, height: 60, alignment: .center)
