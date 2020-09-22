@@ -7,22 +7,35 @@
 
 import SwiftUI
 
+struct ExerciseSection {
+    var title: String
+    var exercises: [Exercise]
+}
+
+
+
 struct ExercisesView: View {
+    
+    @Environment(\.managedObjectContext) var managedObjectContext
+    
+    @FetchRequest(entity: Exercise.entity(), sortDescriptors: []) private var exercises: FetchedResults<Exercise>
     
     @State var showDetail: Bool = false
     @State var press: Bool = false
+    @State var searchText: String = ""
+    
     var body: some View {
         
             
         ZStack {
             VStack {
                     VStack {
-                    SearchBar(text: .constant("")) // change to a binding value
+                    SearchBar(text: $searchText)
                     
                     ScrollView(.horizontal, showsIndicators: false) {  // change
                         HStack {
                             ForEach(1..<4) { _ in
-                                InfoSmallCard(press: $press) //change
+//                                InfoSmallCard(category: "", text: <#T##String#>, image: <#T##String#>, color: <#T##Color#>, tap: <#T##Bool#>, changeText: <#T##String#>, press: <#T##Binding<Bool>#>)
                             }
                         }
                         .padding(.all, 10)
@@ -61,6 +74,6 @@ struct ExercisesView: View {
 
 struct ExercisesView_Previews: PreviewProvider {
     static var previews: some View {
-        ExercisesView()
+        ExercisesView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

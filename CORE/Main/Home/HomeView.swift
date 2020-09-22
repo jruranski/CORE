@@ -6,13 +6,23 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct HomeView: View {
+    
+    @Environment(\.managedObjectContext) private var managedObjectContext
+        
+    @FetchRequest(entity: Location.entity(), sortDescriptors: []) private var locations: FetchedResults<Location>
+    @FetchRequest(entity: Workout.entity(), sortDescriptors: []) private var workouts: FetchedResults<Workout>
+    @FetchRequest(entity: Preset.entity(), sortDescriptors: []) private var presets: FetchedResults<Preset>
+    
     
     @State var showProfile: Bool = false
     @State var showLocations: Bool = false
     @State var showWorkout: Bool = false
     @State var showArticle: Bool = false
+    
+    var workout: Workout?
     
     var body: some View {
 //        NavigationView {
@@ -78,8 +88,10 @@ struct HomeView: View {
                         .font(.system(size: 16,weight: .medium, design: .rounded))
                         .opacity(0.8)
                         
+                    if workoutToday() {
                         StartWorkoutCard(showWorkout: $showWorkout)
                         .padding(.vertical, 20)
+                    }
                     
                     
                     SmallTitle(text: "Recommended", description: "Discover new workouts")
@@ -168,6 +180,22 @@ struct HomeView: View {
             
             
     }
+    
+     func workoutToday() -> Bool {
+        var isWorkoutDay = false
+        
+        for i in workouts {
+            if Calendar.autoupdatingCurrent.isDateInToday(i.startDate ?? Date().addingTimeInterval(360000)) {
+                isWorkoutDay = true
+                
+            }
+        }
+        
+        
+        return isWorkoutDay
+    }
+    
+    
 }
 
 struct ContentView_Previews: PreviewProvider {

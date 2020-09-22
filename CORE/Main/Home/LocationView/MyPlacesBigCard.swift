@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MyPlacesBigCard: View {
     
@@ -19,8 +20,9 @@ struct MyPlacesBigCard: View {
     
     init(show: Binding<Bool>, location: Location) {
         text = location.name ?? "Gym"
-        subtitle = "Full Equipment" // change depending on equipment
+        subtitle = location.subtitle ?? "Full Equipment"
         self.location = location
+        print(location)
         _showEquipment = show
     }
     
@@ -30,9 +32,9 @@ struct MyPlacesBigCard: View {
             VStack(alignment: .leading) {
                 HStack {
                     VStack(alignment: .leading) {
-                        Text("Gym")
+                        Text(text)
                             .font(.system(size: 20, weight: .bold, design: .rounded))
-                        Text("Full Equipment")
+                        Text(subtitle)
                             .font(.system(size: 16, weight: .semibold, design: .rounded))
                     
                 }
@@ -41,8 +43,7 @@ struct MyPlacesBigCard: View {
                 
                 HStack {
                 VStack {
-                    Rectangle()
-                        .foregroundColor(.white)
+                    MapView(location: .constant(MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longtitude), span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))))
                         .frame(width: 90, height: 90, alignment: .center)
                         .background(Color.blue)
                         .clipShape(RoundedRectangle(cornerRadius: 25, style: .continuous))
@@ -88,7 +89,7 @@ struct MyPlacesBigCard: View {
             
         }
         .frame(width: 330, height: 180)
-        .background(Color.white)
+        .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         .modifier(ShadowModifier())
         

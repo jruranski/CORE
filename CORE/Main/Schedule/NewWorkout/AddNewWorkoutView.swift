@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct AddNewWorkoutView: View {
+    @Environment(\.managedObjectContext) private var managedObjectContext
     
     @Binding var showAdd: Bool
     @State var showDetail: Bool = false
@@ -53,6 +54,7 @@ struct AddNewWorkoutView: View {
         }
         if showDetail {
             CustomizeWorkout(showDetail: $showDetail, showAdd: $showAdd).environmentObject(MuscleModel())
+                .environment(\.managedObjectContext, managedObjectContext)
                 .animation(.easeInOut(duration: 0.2))
                 .transition(.move(edge: .trailing))
         }
@@ -62,6 +64,7 @@ struct AddNewWorkoutView: View {
 struct AddNewWorkoutView_Previews: PreviewProvider {
     static var previews: some View {
         AddNewWorkoutView(showAdd: .constant(false), showDetail: false)
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
 

@@ -18,7 +18,8 @@ struct EquipmentView: View {
     
     @Binding var show: Bool
     
-    var equipmentString: String = ""
+    @Binding var equipmentString: String
+    
     var availableEquipment: [String] = []
     var equipment: [Equipment] = appendEquipment() // all items
     
@@ -45,7 +46,10 @@ struct EquipmentView: View {
 //
 //    }
     
-    
+    func save() {
+        equipmentString = model.getSelectionString()
+        self.show.toggle()
+    }
     
     func getSections(eq: [Equipment]) -> [EquipmentSection] {
         
@@ -118,7 +122,7 @@ struct EquipmentView: View {
 
 struct EquipmentView_Previews: PreviewProvider {
     static var previews: some View {
-        EquipmentView(show: .constant(true))
+        EquipmentView(show: .constant(true), equipmentString: .constant(""))
             .environmentObject(EquipmentModel(available: "Barbell;Dumbbells"))
     }
 }

@@ -11,12 +11,12 @@ import CoreData
 @main
 struct COREApp: App {
     
-    let context = PersistentContainer.persistentContainer.viewContext
+    let persistenceController = PersistenceController.shared
     
     
     var body: some Scene {
         WindowGroup {
-            TabBar().environment(\.managedObjectContext, context)
+            TabBar().environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
     }
 }

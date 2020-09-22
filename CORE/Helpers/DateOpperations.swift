@@ -54,7 +54,7 @@ func formatTime(date: Date) -> String {
 //    let theCalendar = Calendar.current
     var dateFormatterTemplate = DateFormatter.dateFormat(fromTemplate: "EEEE, dd  HH:mm", options: 0, locale: NSLocale.current)
     
-    dateFormatterTemplate = DateFormatter.dateFormat(fromTemplate: " HH:mm", options: 0, locale: NSLocale.current)
+    dateFormatterTemplate = DateFormatter.dateFormat(fromTemplate: " HH:mm a", options: 0, locale: NSLocale.current)
     formatter.dateFormat = dateFormatterTemplate
     formattedString = formatter.string(from: date)
     
@@ -63,8 +63,24 @@ func formatTime(date: Date) -> String {
 }
 
 
+func formatTimeDayFirst(date: Date) -> String {
+    var formattedString: String?
+    let formatter = DateFormatter()
+    let dateFormatterTemplate = DateFormatter.dateFormat(fromTemplate: "E, HH:mm a", options: 0, locale: NSLocale.autoupdatingCurrent)
+    
+    formatter.dateFormat = dateFormatterTemplate
+    formattedString = formatter.string(from: date)
+    
+    return formattedString ?? "TUE, 10:00"
+}
 
-
+func formatDuration(duration: Int32) -> String {
+    let seconds = Int(duration)
+    
+    
+    
+    return "45min"
+}
 
 extension Date {
     

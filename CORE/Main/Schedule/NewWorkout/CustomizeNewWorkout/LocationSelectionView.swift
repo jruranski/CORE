@@ -9,12 +9,16 @@ import SwiftUI
 
 struct LocationSelectionView: View {
     
-     var locations: [String] = ["Gym", "Home", "Fabryka Formy", "Travel"]
-    @State var selectedLocation: String = "Gym"
+    @Environment(\.managedObjectContext) private var managedObjectContext
+    
+    @FetchRequest(entity: Location.entity(), sortDescriptors: []) private var locations: FetchedResults<Location>
+    
+//     var locations: [String] = ["Gym", "Home", "Fabryka Formy", "Travel"]
+    @Binding var selectedLocation: Location?
     @Binding var show: Bool
     
     
-    
+    @State var selectedIndex = 0
     
     
     var body: some View {
@@ -25,10 +29,10 @@ struct LocationSelectionView: View {
                         .font(.system(size: 26, weight: .bold, design: .rounded))
                         .padding(.vertical)
                         .padding(.horizontal, 5)
-                    Picker("", selection: $selectedLocation) {
-                        ForEach(locations, id: \.self) { location in
+                    Picker("", selection: $selectedIndex) {
+                        ForEach(0..<locations.count, id: \.self) { index in
                             HStack {
-                               Text(location)
+                                Text(locations[index].name ?? "Gym").tag(index)
                                 .font(.headline)
                                 .padding()
                             }
@@ -39,7 +43,12 @@ struct LocationSelectionView: View {
                     }.pickerStyle(WheelPickerStyle())
                     .labelsHidden()
                     
-                    Button(action: {show.toggle()}) {
+                    Button(action: {
+                        selectedLocation = locations[selectedIndex]
+                        show.toggle()
+                        print(selectedLocation!)
+                    }
+                    ) {
                         VStack {
                             Text("Save")
                                 .font(.system(size: 24, weight: .bold, design: .rounded))
@@ -65,6 +74,6 @@ struct LocationSelectionView: View {
 
 struct LocationSelectionView_Previews: PreviewProvider {
     static var previews: some View {
-        LocationSelectionView(show: .constant(false))
+        LocationSelectionView(selectedLocation: .constant(Location(context: PersistenceController.preview.container.viewContext)), show: .constant(false)).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

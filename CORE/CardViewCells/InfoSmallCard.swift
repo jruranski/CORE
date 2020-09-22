@@ -12,7 +12,7 @@ struct InfoSmallCard: View {
     var category = "Calories Goal"
     var text = "600kcal"
     var image = "flame.fill"
-    
+    var color = Color(.red)
     @State var tap: Bool = false
     @State var changeText: String = ""
     
@@ -27,7 +27,7 @@ struct InfoSmallCard: View {
                 Text(press ? "Change Goal" : category)
                     .font(.system(size:  11, weight: .semibold, design: .rounded))
             }
-            .foregroundColor(.red)
+            .foregroundColor(color)
             
 //            Divider()
             

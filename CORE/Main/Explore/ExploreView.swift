@@ -6,9 +6,15 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct ExploreView: View {
     
+    @Environment(\.managedObjectContext) private var managedObjectContext
+        
+//    @FetchRequest(entity: Location.entity(), sortDescriptors: []) private var locations: FetchedResults<Location>
+    @FetchRequest(entity: Workout.entity(), sortDescriptors: []) private var workouts: FetchedResults<Workout>
+    @FetchRequest(entity: Preset.entity(), sortDescriptors: []) private var presets: FetchedResults<Preset>
     
     @State var showBookmarks: Bool = false
     
@@ -107,7 +113,7 @@ struct ExploreView: View {
             
             
         }
-        
+        .animation(nil)
     }
 }
 

@@ -13,8 +13,10 @@ struct OptionsView: View {
     @Binding var showOptions: Bool
     @Binding var eqString: String
     @Binding var showEq: Bool
+    @Binding var subtitle: String
     
     func selectEquipment(index: Int) {
+        subtitle = options[index]
         switch index {
         case 0:
             eqString = "Ab Wheel;Abdominal Bench;Abdominal Crunch Machine;Abduction Machine;Adjustable Bench;Aerobic Step;AirBike;Back Extension Bench;Back Extension Machine;Balance Trainer;Barbell;Battle Ropes;Bench Press Machine;Biceps Curl Bench;Biceps Curl Machine;Cable Crossover Machine;Cable Row Machine;Calf Raise Machine;Chest Press Machine;Decline Bench;Dip Bar;Dumbbells;Elliptical;Exercise Ball;Exercise Mat;Ez Curl Bar;Flat Bench;Foam Roller;Glute Ham Raise Bench;Glute Kickback Machine;Hyperextension Bench;Incline Bench;Indoor Cycle Bike;Jump Box;Jump Rope;Kettlebell;Lat Pulldown Machine;Leg Curl Machine;Leg Extension Machine;Leg Press Machine;Medicine Ball;Non-motorized Treadmill (Air runner);Olympic Weight Bench;Pec Deck Machine (fly);Plates;Power Tower;Pullup Bar;Recumbent Bike;Row Cable Machine;Rowing Machine;Shoulder Press Machine;Smith Machine;Spin Bike;Squat Rack;Stairmill;Suspension Trainer (TRX);Treadmill;Triceps Bar;Wall Ball"
@@ -25,6 +27,7 @@ struct OptionsView: View {
             showOptions.toggle()
             showEq.toggle()
         case 2:
+            subtitle = ""
             eqString = ""
             showOptions.toggle()
             showEq.toggle()
@@ -83,6 +86,6 @@ struct OptionsView: View {
 
 struct OptionsView_Previews: PreviewProvider {
     static var previews: some View {
-        OptionsView(showOptions: .constant(false), eqString: .constant(""), showEq: .constant(false))
+        OptionsView(showOptions: .constant(false), eqString: .constant(""), showEq: .constant(false), subtitle: .constant(""))
     }
 }

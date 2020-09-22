@@ -7,8 +7,11 @@
 
 import SwiftUI
 import MapKit
+import CoreData
 
 struct AddPlaceView: View {
+    
+    @Environment(\.managedObjectContext) private var moc
     
     @Binding var showAdd: Bool
     @State var showEq: Bool = false
@@ -17,12 +20,25 @@ struct AddPlaceView: View {
     @State var equipmentString: String = "Barbell;Dumbbell"
     @State var showOptions: Bool = false
     @State var bottomState = CGSize.zero
-    
+    @State var subtitleString = "No Equipment"
     var opacity = 0.8
     
     
     func save() {
+        let newLocation = Location(context: moc)
+        newLocation.name = titleString
+        newLocation.equipment = equipmentString
+        newLocation.latitude = location.center.latitude
+        newLocation.longtitude = location.center.longitude
+        newLocation.subtitle = subtitleString
         
+        do {
+            try self.moc.save()
+        }catch{
+            let erro = error.localizedDescription
+            print(erro)
+        }
+        self.showAdd.toggle()
     }
     
     
@@ -125,7 +141,7 @@ struct AddPlaceView: View {
             }
             
             
-                OptionsView(showOptions: $showOptions, eqString: $equipmentString, showEq: $showEq)
+            OptionsView(showOptions: $showOptions, eqString: $equipmentString, showEq: $showEq, subtitle: $subtitleString)
                     .offset(y: showOptions ? 200 : 1000)
                     .offset(y: self.bottomState.height)
                     .transition(.move(edge: .bottom))
@@ -170,7 +186,7 @@ struct AddPlaceView: View {
             
             
             if showEq {
-                EquipmentView(show: $showEq).environmentObject(EquipmentModel(available: equipmentString))
+                EquipmentView(show: $showEq, equipmentString: $equipmentString).environmentObject(EquipmentModel(available: equipmentString))
                     .transition(.move(edge: .trailing))
                     .animation(.easeInOut)
             }

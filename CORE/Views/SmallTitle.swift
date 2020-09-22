@@ -21,6 +21,7 @@ struct SmallTitle: View {
                 Spacer()
             }
             .padding(.horizontal, 10)
+            .padding(.bottom, -16)
             
             HStack {
                 Text(description)

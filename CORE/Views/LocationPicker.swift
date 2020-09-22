@@ -1,24 +1,25 @@
 ////
-////  MapSelection.swift
+////  LocationPicker.swift
 ////  CORE
 ////
-////  Created by Jakub Ruranski on 10/09/2020.
+////  Created by Jakub Ruranski on 18/09/2020.
 ////
 //
 //import SwiftUI
 //import MapKit
-//import UIKit
-//struct MapSelection: UIViewRepresentable {
-//    @Binding var text: String
 //
-//    func showLocationPicker() {
+//
+//struct LocationPicker: View {
+//    @State var presented: Bool = false
+//
+//    func presentPicker() -> UIViewController {
 //        let locationPicker = LocationPickerViewController()
 //
 //        // you can optionally set initial location
 //        let loca = CLLocation(latitude: Double(sections[index].location.latitude ?? 35) , longitude: Double(sections[index].location.longtitude ?? 35) )
 //        let initialLocation = Annotation(name: "\(sections[index].location.name ?? "Home")", location: loca, placemark: CLPlacemark())
 //        locationPicker.location = initialLocation
-//       
+//
 //        // button placed on right bottom corner
 //        locationPicker.showCurrentLocationButton = true // default: true
 //
@@ -40,36 +41,20 @@
 //        // optional region distance to be used for creation region when user selects place from search results
 //        locationPicker.resultRegionDistance = 500 // default: 600
 //
-//        locationPicker.completion = { location in
-//            // do some awesome stuff with location
-//            self.sections[index].location.longtitude = Float(location?.coordinate.longitude ?? 35)
-//            self.sections[index].location.latitude = Float(location?.coordinate.latitude ?? 35)
-//            
-//            do {
-//                try self.managedObjectContext.save()
-//            }catch{
-//                print(error.localizedDescription)
-//            }
-//    }
-//    
-//    func makeUIView(context: Context) -> UITextView {
-//        
-//            
-//        }
+//        return locationPicker
 //    }
 //
-//    func updateUIView(_ uiView: UITextView, context: Context) {
-//        uiView.text = text
+//
+//    var body: some View {
+//        Text("")
+//            .sheet(isPresented: $presented) {
+//
+//            }
 //    }
 //}
 //
-//
-//struct ImagePicker: UIViewControllerRepresentable {
-//    func makeUIViewController(context: UIViewControllerRepresentableContext<ImagePicker>) -> UIViewController {
-//        code
-//    }
-//
-//    func updateUIViewController(_ uiViewController: UIImagePickerController, context: UIViewControllerRepresentableContext<ImagePicker>) {
-//        
+//struct LocationPicker_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LocationPicker()
 //    }
 //}

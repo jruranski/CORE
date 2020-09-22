@@ -8,15 +8,29 @@
 import SwiftUI
 
 struct WorkoutView: View {
+    
+    @Environment(\.managedObjectContext) private var managedObjectContext
+    
+    @FetchRequest(entity: Workout.entity(), sortDescriptors: []) var workouts: FetchedResults<Workout>
+    
+    
     @State var workoutStarted: Bool = false
     @State var workoutRunning: Bool = false
     @State var showDetail: Bool = false
     @State var showAdd: Bool
     @State var press: Bool = false
+    @State var isLoading: Bool = true
     @Binding var showWorkout: Bool
     
     
     var workout: Workout?
+    
+    
+    func load() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(800)) {
+            self.isLoading = false
+        }
+    }
     
     var body: some View {
         ZStack {
@@ -30,22 +44,32 @@ struct WorkoutView: View {
                             StartButtons(started: $workoutStarted, running: $workoutRunning)
                                 .padding()
                         }
-//                        ForEach((workout?.exercises)!) { exercise in
-                        Button(action: {showDetail.toggle()}) {
-                            ExerciseWorkoutCard(press: $press)
-                        }.buttonStyle(PlainButtonStyle())
-//                        }
+                        
+                        
+  
+                        
+                        WorkoutExerciseList(press: $press, workout: workout!)
+//                            ExerciseWorkoutCard
+                        
+                            
+                                    
+                           
+                        
+                        
+                        
+                        
+                        
                         Spacer()
                         
                         workoutStarted ? StartButtons(started: $workoutStarted, running: $workoutRunning) : nil
                     }
+                    .redacted(reason: self.isLoading ? .placeholder : [])
                     
                     
                     
                     
-                    .navigationBarTitle(Text(workout?.name ?? "Workout")
-                                            
-                    )
+                    .navigationBarTitle(Text(workout?.name ?? "Workout"))
+                    
                     .navigationBarItems(leading:
                                             workoutStarted ? nil :
                                             Button(action: {showWorkout.toggle()}) {
@@ -95,12 +119,16 @@ struct WorkoutView: View {
                     
                 }.frame(width: 375)
                 .frame(maxWidth: .infinity)
-             }.animation(.easeInOut)
+             }
+
+             .animation(.easeInOut)
             if showDetail {
                 WorkoutDetail(showDetail: $showDetail)
                     .animation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0))
                     .transition(.move(edge: .bottom))
             }
+        }.onAppear {
+            load()
         }
         
     }

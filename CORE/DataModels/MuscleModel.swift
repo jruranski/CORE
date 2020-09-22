@@ -54,4 +54,33 @@ class MuscleModel: ObservableObject {
     }
 }
 
-
+class WeekdaysModel: ObservableObject {
+    @Published var weekdays: [WeekdaySection] = []
+    
+    var weekdaysStrings = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+    
+    func getSections() -> [WeekdaySection] {
+        var weekdays: [WeekdaySection] = []
+//        var formattedString: String?
+        
+        let date = Date()
+//        let formatter = DateFormatter()
+        let startDate = date.dayOfWeek() ?? "Monday"
+        let index = weekdaysStrings.firstIndex(of: startDate)
+        var inx = 0
+        
+        for i in weekdaysStrings.indices {
+            if i < index! {
+                weekdays.append(WeekdaySection(id: weekdaysStrings.count - inx, name: weekdaysStrings[i], workouts: []))
+            }else if i == index {
+                weekdays.insert(WeekdaySection(id: 0, name: startDate, workouts: []), at: 0)
+                inx += 1
+            }else if i > index! {
+                weekdays.insert(WeekdaySection(id: inx, name: weekdaysStrings[i], workouts: []), at: inx)
+                inx += 1
+            }
+            
+        }
+        return weekdays
+    }
+}

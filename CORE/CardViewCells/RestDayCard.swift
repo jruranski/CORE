@@ -12,11 +12,12 @@ struct RestDayCard: View {
         VStack {
             Text("Rest Day")
                 .font(.system(size: 28, weight: .bold, design: .rounded))
+                .opacity(0.2)
         }
         .frame(width: 350, height: 100, alignment: .center)
-        .background(Color.white)
+        .background(Color(.systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
-        .shadow(radius: 15, y: 10)
+//        .shadow(radius: 15, y: 10)
     }
 }
 

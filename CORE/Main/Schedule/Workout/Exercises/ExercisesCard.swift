@@ -8,10 +8,28 @@
 import SwiftUI
 
 struct ExercisesCard: View {
+    
+    var exercise: Exercise?
+    
+    var logoImage: Image {
+        
+        //change for exercise equipment info weight workout bodyweight workout cardio
+        
+        return Image(systemName: "flame.fill")
+    }
+    
+    var muscleString: String {
+        let string = exercise?.muscle ?? "Compound Movement"
+        
+        //change to read from exercise muscle string
+        return string
+    }
+    
+    var color: Color = Color(.systemRed)
     var body: some View {
         HStack {
             
-            Image("activityAbsDummy")
+            Image(exercise?.gifName ?? "activityAbsDummy")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 105, height: 105, alignment: .center)
@@ -20,20 +38,20 @@ struct ExercisesCard: View {
                 .padding(.leading)
             VStack(alignment: .leading) {
                 HStack {
-                    Image(systemName: "flame.fill")
+                    logoImage
                         .font(.system(size: 10, weight: .semibold, design: .rounded))
-                        .foregroundColor(.red)
+                        .foregroundColor(color)
                         .padding(.trailing, -5)
-                    Text("Compound Movement")
+                    Text(exercise?.muscle ?? "Compound Movement")
                         .font(.system(size: 12, weight: .semibold, design: .rounded))
-                        .foregroundColor(.red)
+                        .foregroundColor(color)
                     Spacer()
                     Image(systemName: "chevron.right")
                         .font(.system(size: 14, weight: .semibold, design: .rounded))
                         .opacity(0.5)
                 }.padding(.trailing)
                 
-                Text("Bench Press")
+                Text(exercise?.name ?? "Bench Press")
                     .font(.system(size: 24, weight: .bold, design: .rounded))
                 
                 HStack {

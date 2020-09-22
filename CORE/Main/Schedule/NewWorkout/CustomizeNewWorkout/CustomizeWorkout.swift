@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CustomizeWorkout: View {
-    
+    @Environment(\.managedObjectContext) private var managedObjectContext
     @EnvironmentObject private var muscle: MuscleModel
     
     @State var startingDate: Date = Date()
@@ -17,6 +17,7 @@ struct CustomizeWorkout: View {
     @State var showEnd: Bool = false
     @State var showLocation = false
     @State var goalString: String = "Select Goal"
+    @State var selectedLocation: Location?
     
     @Binding var showDetail: Bool
     @Binding var showAdd: Bool
@@ -32,6 +33,21 @@ struct CustomizeWorkout: View {
     
     func save() {
         // save changes
+        let newWorkout = Workout(context: managedObjectContext)
+        newWorkout.name = titleString
+        newWorkout.startDate = startingDate
+        newWorkout.endDate = endingDate
+        newWorkout.location = selectedLocation
+        
+//        newWorkout.location = 
+        // add goal and muscles and add exercises depending on muscles
+        
+        do {
+            try self.managedObjectContext.save()
+        }catch {
+            let err = error.localizedDescription
+            print(err)
+        }
         showDetail.toggle()
         showAdd.toggle()
             
@@ -127,10 +143,10 @@ struct CustomizeWorkout: View {
                         
                         Button(action: { showStart.toggle()}) {
                             HStack(alignment: .center) {
-                                Text("TUE, 10:00AM") // change
+                                Text(formatTimeDayFirst(date: startingDate))
                                     .font(.system(size: 18, weight: .bold, design: .rounded))
                                     .frame(alignment: .center)
-                                    .opacity(0.3) // change
+                                    .opacity(startingDate != Date() ? 1 : 0.3) // change
                             }
                             
                             .padding()
@@ -176,10 +192,10 @@ struct CustomizeWorkout: View {
                         
                         Button(action: {showLocation.toggle()}) {
                             HStack(alignment: .center) {
-                                Text("GYM") // change
+                                Text(selectedLocation?.name ?? "Gym")
                                     .font(.system(size: 18, weight: .bold, design: .rounded))
                                     .frame(alignment: .center)
-                                    .opacity(0.3)
+                                    .opacity(selectedLocation != nil ? 1 : 0.3)
                                 
                             }
                             .padding()
@@ -252,7 +268,7 @@ struct CustomizeWorkout: View {
                     .transition(.opacity)
             }
             if showLocation {
-                LocationSelectionView(show: $showLocation)
+                LocationSelectionView(selectedLocation: $selectedLocation, show: $showLocation)
                     .animation(.easeInOut)
                     .transition(.opacity)
             }
@@ -267,5 +283,6 @@ struct CustomizeWokrout_Previews: PreviewProvider {
     static var previews: some View {
         CustomizeWorkout(showDetail: .constant(false), showAdd: .constant(false))
             .environmentObject(MuscleModel())
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
