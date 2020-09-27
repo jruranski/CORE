@@ -11,6 +11,45 @@ struct PresetWorkoutDetail: View {
     @Environment(\.managedObjectContext) var managedObjectContext
     var preset: Preset?
     
+    var exercisesPreviewArray: [Exercise] = []
+    
+    @State var isLoadingPresets: Bool = true
+    
+    func getExercises() -> [Exercise] {
+        
+        var exercises: [Exercise] = []
+        
+        if let exerciseArray = preset?.exercisesArray {
+        var isPresent = false
+        
+        for index in exerciseArray.indices {
+            for exercise in exercises {
+                if exercise.name == exerciseArray[index].name {
+                    isPresent = true
+                    break
+                }
+            }
+            if isPresent == false {
+                exercises.append(exerciseArray[index])
+            }
+            isPresent = false
+        }
+        
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200) ) {
+            self.isLoadingPresets = false
+        }
+        return exercises
+        
+    }
+    
+    init(preset: Preset) {
+        self.preset = preset
+        exercisesPreviewArray = getExercises()
+    }
+    
+    
     var body: some View {
         ScrollView {
             VStack {
@@ -24,13 +63,13 @@ struct PresetWorkoutDetail: View {
                 
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack {
-                        ForEach(1..<5) { _ in
-                            PresetExerciseCard()
+                        ForEach(exercisesPreviewArray) { exercise in
+                            PresetExerciseCard(exercise: exercise)
                         }
                     }
                     .padding()
                     
-                }
+                }.redacted(reason: isLoadingPresets ? .placeholder : [])
                 
                 HStack {
                     Text("Exercises in this workout")
@@ -40,8 +79,8 @@ struct PresetWorkoutDetail: View {
                 .padding(.leading, 26)
                 
                 
-                ForEach(preset!.exercisesArray) { _ in
-                        PresetExerciseRow()
+                ForEach(preset!.exercisesArray) { exercise in
+                        PresetExerciseRow(exercise: exercise)
                 }
                 
                 .navigationBarTitle(Text(preset?.name ?? "Workout name"))
@@ -74,7 +113,7 @@ struct PresetWorkoutDetail: View {
 
 struct PresetWorkoutDetail_Previews: PreviewProvider {
     static var previews: some View {
-        PresetWorkoutDetail()
+        PresetWorkoutDetail(preset: Preset(context: PersistenceController.preview.container.viewContext))
             .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

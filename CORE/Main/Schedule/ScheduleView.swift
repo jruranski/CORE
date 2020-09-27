@@ -25,7 +25,7 @@ struct ScheduleView: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
     
     @FetchRequest(entity: Workout.entity(), sortDescriptors: []) var workouts: FetchedResults<Workout>
-    
+   
     
     var weekdays: [WeekdaySection] = []
     @State var showAdd: Bool = false
@@ -73,22 +73,27 @@ struct ScheduleView: View {
     
     func populateWeekdays() {
         var currentDate = Date()
+//        var filteredWorkouts = workouts.filter($0.startDate > Date())
         for workout in workouts {
+            if workout.endDate! >= Date() {
             for i in weekdays.indices {
                 if Calendar.autoupdatingCurrent.isDate(workout.startDate ?? Date(), inSameDayAs: currentDate) {
                     weekdays[i].workouts.append(workout)
                 }
+                
                 let now = Calendar.current.dateComponents(in: .current, from: currentDate)
                 let tomorrow = DateComponents(year: now.year, month: now.month, day: now.day! + 1)
+                print(tomorrow)
                 let dateTomorrow = Calendar.current.date(from: tomorrow)!
                 
                 currentDate = dateTomorrow
                     
-                    
                 
             }
+                currentDate = Date()
+            }
         }
-        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(200)) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(300)) {
         isLoading = false
         }
     }
@@ -205,6 +210,9 @@ struct ScheduleView: View {
         }.onAppear {
 //            weekdays = getSection()
             populateWeekdays()
+            for i in weekdays {
+                print(i.workouts)
+            }
         }
     }
 }

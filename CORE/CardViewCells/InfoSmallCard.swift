@@ -47,16 +47,20 @@ struct InfoSmallCard: View {
         .scaleEffect(tap ? 0.9 : 1)
         
         .animation(.spring(response: 0.6, dampingFraction: 0.5, blendDuration: 0))
-        
+        .onTapGesture(count: 1, perform: {
+            
+        })
         .gesture(
             press ? nil
-                : LongPressGesture(minimumDuration: 0.5, maximumDistance: 10)
+                : LongPressGesture(minimumDuration: 0.2, maximumDistance: 10)
                 .onChanged { value in
+                    
                     self.tap = true
                     
                     DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(1), execute: {
                         self.tap = false
                     })
+                    
                 }
                 .onEnded { value in
                     self.press.toggle()

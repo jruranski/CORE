@@ -9,10 +9,10 @@ import SwiftUI
 
 struct WorkoutExerciseList: View {
     @Binding var press: Bool
-    var workout: Workout
+    var workout: Workout?
     var body: some View {
         LazyVStack {
-            ForEach(workout.exercisesArray) { exercise in
+            ForEach(workout!.exercisesArray) { exercise in
             ExerciseWorkoutCard(press: $press)
             }
         }

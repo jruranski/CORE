@@ -8,23 +8,25 @@
 import SwiftUI
 
 struct PresetExerciseCard: View {
+    var exercise: Exercise?
+    
     var body: some View {
         ZStack {
             
-            Image("activityAbsDummy")
+            Image(exercise?.gifName ?? "activityAbsDummy")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
             
             VStack {
                 Spacer()
                 HStack {
-                    Text("Squats")
+                    Text(exercise?.name ?? "Squats")
                         .font(.system(size: 24, weight: .bold, design: .rounded))
                     Spacer()
                     Image(systemName: "play.circle.fill")
                         .font(.system(size: 24, weight: .bold, design: .rounded))
                 }
-                .foregroundColor(.white)
+                .foregroundColor(Color(.systemBackground))
                 .padding(.bottom, 20)
                 .padding(.horizontal, 20)
             }

@@ -27,8 +27,8 @@ struct OptionsView: View {
             showOptions.toggle()
             showEq.toggle()
         case 2:
-            subtitle = ""
-            eqString = ""
+            subtitle = "Selected Equipment"
+//            eqString = eqString
             showOptions.toggle()
             showEq.toggle()
         case 3:

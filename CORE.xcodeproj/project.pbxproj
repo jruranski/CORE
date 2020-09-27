@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		3B022ADA24F7AB020004E528 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B022AD924F7AB020004E528 /* DatePickerView.swift */; };
+		3B06B720251F167A00A4D6E9 /* LocationDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B06B71F251F167A00A4D6E9 /* LocationDetailView.swift */; };
+		3B06B72525207C0400A4D6E9 /* WorkoutDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B06B72425207C0400A4D6E9 /* WorkoutDetailView.swift */; };
 		3B0A268A24F80AFD00F32B04 /* MuscleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A268924F80AFD00F32B04 /* MuscleModel.swift */; };
 		3B0A268D24F80C9700F32B04 /* LocationSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A268C24F80C9700F32B04 /* LocationSelection.swift */; };
 		3B0A268F24F80D0900F32B04 /* GoalSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3B0A268E24F80D0900F32B04 /* GoalSelectionView.swift */; };
@@ -106,6 +108,8 @@
 
 /* Begin PBXFileReference section */
 		3B022AD924F7AB020004E528 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
+		3B06B71F251F167A00A4D6E9 /* LocationDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetailView.swift; sourceTree = "<group>"; };
+		3B06B72425207C0400A4D6E9 /* WorkoutDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutDetailView.swift; sourceTree = "<group>"; };
 		3B0A268924F80AFD00F32B04 /* MuscleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MuscleModel.swift; sourceTree = "<group>"; };
 		3B0A268C24F80C9700F32B04 /* LocationSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSelection.swift; sourceTree = "<group>"; };
 		3B0A268E24F80D0900F32B04 /* GoalSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSelectionView.swift; sourceTree = "<group>"; };
@@ -222,6 +226,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3B06B72925207C6900A4D6E9 /* Change Workout */ = {
+			isa = PBXGroup;
+			children = (
+				3B06B72425207C0400A4D6E9 /* WorkoutDetailView.swift */,
+			);
+			path = "Change Workout";
+			sourceTree = "<group>";
+		};
 		3B0A268B24F80C8300F32B04 /* CustomizeNewWorkout */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,6 +292,7 @@
 			children = (
 				3B0A269724F8177800F32B04 /* EquipmentView */,
 				3BE01E1F24CD8B690056D2C0 /* MyPlacesView.swift */,
+				3B06B71F251F167A00A4D6E9 /* LocationDetailView.swift */,
 				3B4194B52504E04400EB1459 /* MapView.swift */,
 				3B7BB77224E94C4600C627B4 /* AddPlaceView.swift */,
 				3BDF204B250B734D004E119F /* OptionsView.swift */,
@@ -344,6 +357,7 @@
 				3BA256FE24CAE934007C6CE6 /* WorkoutView.swift */,
 				3B5015542518836300499473 /* WorkoutExerciseList.swift */,
 				3BA2570224CC37F7007C6CE6 /* ExerciseWorkoutCard.swift */,
+				3B06B72925207C6900A4D6E9 /* Change Workout */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -679,6 +693,7 @@
 			files = (
 				3BA256FB24CAC24A007C6CE6 /* BigScheduleCard.swift in Sources */,
 				3BDF2048250A354D004E119F /* MapSelection.swift in Sources */,
+				3B06B720251F167A00A4D6E9 /* LocationDetailView.swift in Sources */,
 				3B7BB77124E9464B00C627B4 /* EquipmentDataModel.swift in Sources */,
 				3BA2570324CC37F7007C6CE6 /* ExerciseWorkoutCard.swift in Sources */,
 				3BE01E1824CC5BC60056D2C0 /* AddNewWorkoutView.swift in Sources */,
@@ -692,6 +707,7 @@
 				3B0A268D24F80C9700F32B04 /* LocationSelection.swift in Sources */,
 				3B5015622518934900499473 /* Exercise+CoreDataClass.swift in Sources */,
 				3BC34A2624D1775800012A8D /* PastWorkoutDetail.swift in Sources */,
+				3B06B72525207C0400A4D6E9 /* WorkoutDetailView.swift in Sources */,
 				3BA256FF24CAE934007C6CE6 /* WorkoutView.swift in Sources */,
 				3BA2570724CC4549007C6CE6 /* InfoBigCard.swift in Sources */,
 				3B5015652518934900499473 /* Preset+CoreDataProperties.swift in Sources */,

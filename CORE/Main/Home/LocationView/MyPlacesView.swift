@@ -19,6 +19,8 @@ struct MyPlacesView: View {
     @State var showAdd: Bool = false
     @State var showEquipment: Bool = false
     @State var travelShow: Bool = true
+    @State var showDetail:Bool = false
+    @State var pickedLocation: Location?
     @Binding var showLocations: Bool
     var location: Location?
     
@@ -96,8 +98,14 @@ struct MyPlacesView: View {
                     if location.name == "Travel" {
                      TravelBigCard()
                     }else{
+                        Button(action: {
+                            pickedLocation = location
+                            showDetail.toggle()
+                           
+                        }) {
                     MyPlacesBigCard(show: $showEquipment, location: location)
                         .padding(.bottom)
+                        }.buttonStyle(PlainButtonStyle())
                     }
                 }
                 
@@ -123,6 +131,11 @@ struct MyPlacesView: View {
                 AddPlaceView(showAdd: $showAdd).environment(\.managedObjectContext, managedObjectContext)
                     .animation(.spring())
                     .transition(.move(edge: .trailing))
+            }
+            if showDetail {
+                LocationDetailView(location: pickedLocation!, showAdd: $showDetail).environment(\.managedObjectContext, managedObjectContext)
+                                    .animation(.spring())
+                                    .transition(.move(edge: .trailing))
             }
         }.onAppear {
             firstLaunch()

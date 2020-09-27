@@ -30,7 +30,7 @@ struct BigWorkoutCard: View {
                 
                 Spacer()
                 
-                logo // add custom string
+                logo 
                     .foregroundColor(Color(startingColor))
                     .font(.system(size: 20, weight: .medium))
                     .frame(width: 36, height: 36, alignment: .center)

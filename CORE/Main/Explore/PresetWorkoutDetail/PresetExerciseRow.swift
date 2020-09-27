@@ -8,10 +8,12 @@
 import SwiftUI
 
 struct PresetExerciseRow: View {
+    var exercise: Exercise?
+    
     var body: some View {
         HStack {
             
-            Image("activityAbsDummy")
+            Image(exercise?.gifName ?? "activityAbsDummy")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
                 .frame(width: 75, height: 75, alignment: .center)
@@ -23,9 +25,9 @@ struct PresetExerciseRow: View {
                 HStack {
                     
                     HStack(spacing: 3.0) {
-                        Image(systemName: "bag.fill")
+                        Image(systemName: "bag.fill") // change for exercise icons
                             .font(.system(size: 12, weight: .semibold, design: .rounded))
-                        Text("Compound Movement")
+                        Text("Compound Movement") // change depending on exercise type
                             .font(.system(size: 14, weight: .semibold, design: .rounded))
                     }
                     .foregroundColor(Color(#colorLiteral(red: 0, green: 0.7494170666, blue: 0.811537087, alpha: 1)))
@@ -38,10 +40,10 @@ struct PresetExerciseRow: View {
                 .padding(.trailing, 20)
                 .padding(.top, 10)
                 Spacer()
-                Text("Squats")
+                Text(exercise?.name ?? "Squats")
                     .font(.system(size: 20, weight: .bold, design: .rounded))
                 Spacer()
-                Text("25x40kg")
+                Text("\(exercise!.sets * exercise!.reps)x\(exercise!.weight)kg") // add pound option
                     .font(.system(size: 16, weight: .medium, design: .rounded))
                     .padding(.bottom, /*@START_MENU_TOKEN@*/10/*@END_MENU_TOKEN@*/)
             }

@@ -19,11 +19,26 @@ struct ExploreView: View {
     @State var showBookmarks: Bool = false
     @State var isLoading: Bool = true
     
+    var presetSections: [ExploreSection] = []
+    
+    
+    func getSections() -> [ExploreSection] {
+        var sections: [ExploreSection] = []
+        
+        
+        
+        
+        return sections
+    }
     
     func load() {
         DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(400)) {
         self.isLoading = false
         }
+    }
+    
+    init() {
+        presetSections = getSections()
     }
     var body: some View {
         ZStack {
@@ -33,10 +48,10 @@ struct ExploreView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 10) {
-                                ForEach(1..<6) { _ in // add values
+                                ForEach(presetSections[0].presets) { preset in 
                                     HStack {
-                                        NavigationLink(destination: PresetWorkoutDetail()) {
-                                        BigWorkoutCard()
+                                        NavigationLink(destination: PresetWorkoutDetail(preset: preset)) {
+                                            BigWorkoutCard(title: preset.name ?? "", subtitle: preset.longText ?? "", image: preset.image ?? "", logo: Image(preset.icon ?? ""), startingColor: .red, endColor: .orange) // change for colors
                                             .padding(.bottom)
                                             .padding(.bottom)
                                         }.buttonStyle(PlainButtonStyle())
@@ -53,19 +68,19 @@ struct ExploreView: View {
                         }.frame(width: 375, height: 275)
                         
                         
-                        ForEach(1..<3) { _ in
-                        
+                        ForEach(presetSections.indices) { index in
+                            if index >= 1 {
                         SmallTitle(text: "For You", description: "Workouts that perfectly suit your goals and needs")
 
                         // discover section
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 10) {
-                                ForEach(1..<4) { _ in
+                                ForEach(presetSections[index].presets) { preset in
                                     
                                     GeometryReader { geometry in
                                         VStack {
-                                            NavigationLink(destination: PresetWorkoutDetail()) {
-                                        ExploreSmallCard()
+                                            NavigationLink(destination: PresetWorkoutDetail(preset: preset)) {
+                                                ExploreSmallCard(title: preset.name ?? "", subtitle: preset.longText ?? "", logo: Image(systemName: "bolt.heart"), image: Image(preset.icon ?? ""), color1: .red, color2: .orange) // change for custom colors
                                             .rotation3DEffect(
                                                 .degrees(Double(geometry.frame(in: .global).minX - 30) / -20),
                                                 axis: (x: 0.0, y: 10.0, z: 0.0),
@@ -76,7 +91,7 @@ struct ExploreView: View {
                                             
                                             }.buttonStyle(PlainButtonStyle())
                                             
-                                        Text("60min Workout")
+                                            Text("\(Int(preset.duration / 60))min Workout")
                                             .frame(alignment: .leading)
                                             .font(.system(size: 14, weight: .light, design: .rounded))
                                             .opacity(0.6)
@@ -98,7 +113,7 @@ struct ExploreView: View {
                             .padding(.bottom, -50)
                         }
                     }
-                        
+                        }
                         Spacer()
                     }
                     .padding(.top, 10)
@@ -112,7 +127,7 @@ struct ExploreView: View {
         //                                    .offset(x: 0, y: 47)
                                             }.buttonStyle(PlainButtonStyle())
                 )
-                }.redacted(reason: .placeholder)
+                }.redacted(reason: isLoading ? .placeholder : [])
             }
             .opacity(showBookmarks ? 0 : 1)
             .animation(.linear)
@@ -131,5 +146,18 @@ struct ExploreView: View {
 struct ExploreView_Previews: PreviewProvider {
     static var previews: some View {
         ExploreView()
+            .environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }
+
+
+
+struct ExploreSection {
+    var title: String
+    var subtitle: String
+    var colors: [UIColor]
+    var presets: [Preset]
+}
+
+
+

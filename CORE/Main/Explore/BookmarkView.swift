@@ -19,8 +19,8 @@ struct BookmarkView: View {
     
     var body: some View {
         List {
-            ForEach(1..<6) { _ in
-                NavigationLink(destination: PresetWorkoutDetail()) {
+            ForEach(presets) { preset in
+                NavigationLink(destination: PresetWorkoutDetail(preset: preset)) {
                 BookmarkRow()
                 }.buttonStyle(PlainButtonStyle())
             }
