@@ -40,7 +40,7 @@ struct InfoSmallCard: View {
         .animation(.easeIn)
         .padding(.all, 8)
         .frame(width:  125, height:  55, alignment: .leading)
-        .background(Color.white) //change 4 dm
+        .background(Color(.systemBackground)) //change 4 dm
         .clipShape(RoundedRectangle(cornerRadius: 15, style: .continuous))
         .shadow(color: Color.black.opacity(0.1), radius: 10, y: 5)
         .shadow(color: Color.black.opacity(0.1), radius: 1, y: 1)

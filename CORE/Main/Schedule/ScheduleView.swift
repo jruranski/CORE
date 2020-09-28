@@ -75,15 +75,17 @@ struct ScheduleView: View {
         var currentDate = Date()
 //        var filteredWorkouts = workouts.filter($0.startDate > Date())
         for workout in workouts {
-            if workout.endDate! >= Date() {
+            if workout.endDate! <= Date() || Calendar.autoupdatingCurrent.isDateInToday(workout.startDate!){
+                
             for i in weekdays.indices {
+                
                 if Calendar.autoupdatingCurrent.isDate(workout.startDate ?? Date(), inSameDayAs: currentDate) {
                     weekdays[i].workouts.append(workout)
                 }
                 
                 let now = Calendar.current.dateComponents(in: .current, from: currentDate)
                 let tomorrow = DateComponents(year: now.year, month: now.month, day: now.day! + 1)
-                print(tomorrow)
+                
                 let dateTomorrow = Calendar.current.date(from: tomorrow)!
                 
                 currentDate = dateTomorrow
@@ -154,7 +156,7 @@ struct ScheduleView: View {
                         
                     }
                     .padding(.horizontal, 10)
-                    .padding(.leading , 14)
+//                    .padding(.leading , 14)
                 .padding(.top, 30)
                 
                     ForEach(weekdays, id: \.id) { weekday in

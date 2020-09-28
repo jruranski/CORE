@@ -11,9 +11,20 @@ struct WorkoutExerciseList: View {
     @Binding var press: Bool
     var workout: Workout?
     var body: some View {
-        LazyVStack {
-            ForEach(workout!.exercisesArray) { exercise in
-            ExerciseWorkoutCard(press: $press)
+        VStack {
+            HStack {
+                Text("Start - \(formatTime(date: workout?.startDate ?? Date()))")
+                    .font(.system(size: 20, weight: .bold, design: .rounded))
+                    .opacity(0.4)
+                    .multilineTextAlignment(.center)
+//                Spacer()
+            }.padding(.all, 10)
+           
+            
+            LazyVStack {
+                ForEach(workout!.exercisesArray) { exercise in
+                ExerciseWorkoutCard(press: $press)
+                }
             }
         }
         

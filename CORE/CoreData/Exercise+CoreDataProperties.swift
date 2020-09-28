@@ -35,6 +35,47 @@ extension Exercise {
     @NSManaged public var preset: Preset?
     @NSManaged public var workout: Workout?
     @NSManaged public var index: Int16
+    
+    
+    public var exerciseType: String {
+        
+        var type = "Cardio"
+        
+        let muscleString: String = muscle ?? ""
+        
+        let muscleArray = muscleString.components(separatedBy: ";")
+        
+        let first = muscleArray[0]
+           
+        if first == "Cardio" {
+            type = first
+            }
+        
+        
+        return type
+    }
+    
+    public var exerciseMuscle: String {
+        var muscle = ""
+        
+        let muscleString: String = muscle ?? ""
+        
+        let muscleArray = muscleString.components(separatedBy: ";")
+        
+      let first = muscleArray[0]
+            if first != "Cardio" {
+                muscle = first
+            }else{
+                 let second = muscleArray[1]
+                    muscle = second
+                
+            
+        }
+        
+        
+        return muscle
+    }
+    
 }
 
 extension Exercise : Identifiable {

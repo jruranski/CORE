@@ -42,7 +42,7 @@ struct PastWorkoutCard: View {
                     
                     
                     Text(workout?.name ?? "Full body workout")
-                        .font(.system(size: 24, weight: .bold, design: .rounded))
+                        .font(.system(size: 20, weight: .bold, design: .rounded))
                 }
                 .padding(.bottom, -20)
                 .padding(.horizontal, 10)

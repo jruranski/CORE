@@ -23,8 +23,17 @@ struct ExercisesView: View {
     @State var showDetail: Bool = false
     @State var press: Bool = false
     @State var searchText: String = ""
+    @State var selectedLocation: Location?
+    @State var showLocation: Bool = false
     
+    @Binding var showExercises: Bool
     var workout: Workout?
+    
+    
+    init(showExercises: Binding<Bool>, workout: Workout) {
+        self.workout = workout
+        self._showExercises = showExercises
+    }
     
     
     var body: some View {
@@ -32,15 +41,45 @@ struct ExercisesView: View {
             
         ZStack {
             VStack {
+                VStack {
+                    HStack {
+                        HStack(spacing: 2) {
+                            Button(action: { showExercises.toggle()}) {
+                                Image(systemName: "chevron.left")
+                                    .font(.system(size: 26, weight: .bold, design: .rounded))
+                            }.buttonStyle(PlainButtonStyle())
+                                Text("Exercises")
+                //                    .padding()
+                                    .font(.system(size: 30, weight: .bold, design: .rounded))
+                                Spacer()
+                                
+                        }
+                        
+                    }
+                    }
+                    .padding(.horizontal, 10)
+                    .padding(.leading , 8)
+                .padding(.top, 30)
                     VStack {
                     SearchBar(text: $searchText)
                     
                     ScrollView(.horizontal, showsIndicators: false) {  // change
                         HStack {
                             
+                            Button(action: {}) {
                                 InfoSmallCard(category: "Muscle Group", text: "Chest", image: "", color: Color(.systemTeal), press: $press)
+                            }.buttonStyle(PlainButtonStyle())
+                            Button(action: {}) {
                                 InfoSmallCard(category: "Exercise type", text: "Compound", image: "", color: Color(.systemPurple), press: $press)
-                                InfoSmallCard(category: "Equipment", text: "Chest", image: "", color: Color(.systemGreen), press: $press)
+                            }.buttonStyle(PlainButtonStyle())
+                            Button(action: {showLocation.toggle()}) {
+                                InfoSmallCard(category: "Equipment", text: selectedLocation?.name ?? "Gym", image: "", color: Color(.systemGreen), press: $press)
+                            }.buttonStyle(PlainButtonStyle())
+                            
+                            
+//                            InfoBigCard(category: "Muscle Group", text: "Chest", color: Color(.systemTeal))
+//                            InfoBigCard(category: "Exercise Type", text: "Compound", color: Color(.systemPurple))
+//                            InfoBigCard(category: "Equipment", text: "Gym", color: Color(.systemGray))
                             
                         }
                         .padding(.all, 10)
@@ -71,6 +110,10 @@ struct ExercisesView: View {
                     .transition(.move(edge: .bottom))
             }
             
+            if showLocation {
+//                LocationSelectionView(
+            }
+            
         }
             
             
@@ -81,6 +124,6 @@ struct ExercisesView: View {
 
 struct ExercisesView_Previews: PreviewProvider {
     static var previews: some View {
-        ExercisesView().environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
+        ExercisesView(showExercises: .constant(false), workout: Workout(context: PersistenceController.preview.container.viewContext)).environment(\.managedObjectContext, PersistenceController.preview.container.viewContext)
     }
 }

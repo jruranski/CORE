@@ -8,6 +8,13 @@
 import SwiftUI
 
 struct ActivityCard: View {
+    
+    var totalWeight = ""
+    var totalTime = ""
+    var totalWorkouts = ""
+    var avgWorkout = ""
+    var avgWeight = ""
+    
     var body: some View {
         VStack {
             VStack(spacing: 16) {
@@ -15,21 +22,21 @@ struct ActivityCard: View {
                     Text("Total Weight Lifted")
                         .font(.system(size: 14, weight: .medium, design: .rounded))
                     
-                    Text("1 200 450kg")
+                    Text(totalWeight)
                         .font(.system(size: 48, weight: .heavy, design: .rounded))
                         .padding(8)
                 }
                 
                 HStack {
                     VStack {
-                        Text("56 hours")
+                        Text(totalTime)
                             .font(.system(size: 24, weight: .bold, design: .rounded))
                         Text("Total Time")
                             .font(.system(size: 14, weight: .medium, design: .rounded))
                     }
                     Spacer()
                     VStack {
-                        Text("247")
+                        Text(totalWorkouts)
                             .font(.system(size: 24, weight: .bold, design: .rounded))
                         Text("Total Workouts")
                             .font(.system(size: 14, weight: .medium, design: .rounded))
@@ -39,14 +46,14 @@ struct ActivityCard: View {
                 .padding(.top, 10)
                 HStack {
                     VStack {
-                        Text("36MIN")
+                        Text(avgWorkout)
                             .font(.system(size: 24, weight: .bold, design: .rounded))
                         Text("Avg. Workout")
                             .font(.system(size: 14, weight: .medium, design: .rounded))
                     }
                     Spacer()
                     VStack {
-                        Text("1300kg")
+                        Text(avgWeight)
                             .font(.system(size: 24, weight: .bold, design: .rounded))
                         Text("Avg. Weight")
                             .font(.system(size: 14, weight: .medium, design: .rounded))

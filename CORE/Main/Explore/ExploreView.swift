@@ -139,6 +139,7 @@ struct ExploreView: View {
         .onAppear {
             load()
         }
+        .background(Color(.systemBackground).edgesIgnoringSafeArea(.all))
         .animation(nil)
     }
 }

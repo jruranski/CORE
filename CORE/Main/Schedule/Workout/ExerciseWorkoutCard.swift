@@ -12,6 +12,7 @@ struct ExerciseWorkoutCard: View {
     @Binding var press: Bool
     
     var exercise: Exercise?
+    var workout: Workout?
     
     var body: some View {
         ZStack {
@@ -51,11 +52,11 @@ struct ExerciseWorkoutCard: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                         HStack(spacing: 10) {
-                            ForEach(1..<5) { _ in
+                           
                                 InfoSmallCard(category: "Sets", text: "\(exercise?.sets ?? 4)", image: "list.number",color: Color(.systemYellow), press: $press)
                                 InfoSmallCard(category: "Reps", text:"\( exercise?.reps ?? 12)" , image: "repeat",color: Color(.systemRed), press: $press)
                                 InfoSmallCard(category: "Weight", text: "\(Int(exercise?.weight ?? 0))kg", image: "shield.fill", color: Color(.systemIndigo), press: $press) //change for pounds
-                            }
+                            
                         }
                                         
         //                .frame(width: 350, height: 60, alignment: .center)

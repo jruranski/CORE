@@ -21,6 +21,8 @@ struct WorkoutView: View {
     @State var press: Bool = false
     @State var isLoading: Bool = true
     @State var showOptions: Bool = false
+    @State var showExercises: Bool = false
+    
     @Binding var showWorkout: Bool
     
     
@@ -58,7 +60,7 @@ struct WorkoutView: View {
                                     HStack(spacing: 2) {
                                         
                                         Text("Edit")
-                                            .foregroundColor(.black) // change for dmode
+                                            .foregroundColor(Color(.label)) 
                                             .font(.system(size: 18, weight: .semibold, design: .rounded))
                                             .frame(width: 48, height: 36, alignment: .center)
                                     }
@@ -72,7 +74,7 @@ struct WorkoutView: View {
                                     
                                 })
                                 
-                                Button(action: {showAdd.toggle()
+                                Button(action: {showExercises.toggle()
                                     print("showAdd")
                                 }) {
                                 Image(systemName: "plus")
@@ -131,7 +133,9 @@ struct WorkoutView: View {
                     
                     
                     
-                }.frame(width: 375)
+                }
+                .opacity(showExercises ? 0 : 1)
+                .frame(width: 375)
                 .frame(maxWidth: .infinity)
              
 
@@ -145,6 +149,13 @@ struct WorkoutView: View {
             if showOptions {
                 WorkoutDetailView(workout: workout!, showDetail: $showOptions)
                     .environmentObject(MuscleModel())
+                    .animation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0))
+                    .transition(.move(edge: .bottom))
+            }
+            
+            if showExercises {
+                ExercisesView(showExercises: $showExercises, workout: workout!)
+                    .environment(\.managedObjectContext, managedObjectContext)
                     .animation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0))
                     .transition(.move(edge: .bottom))
             }
