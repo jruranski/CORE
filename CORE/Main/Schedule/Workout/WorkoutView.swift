@@ -135,7 +135,7 @@ struct WorkoutView: View {
                     
                 }
                 .opacity(showExercises ? 0 : 1)
-                .frame(width: 375)
+                .frame(width: screenWidth)
                 .frame(maxWidth: .infinity)
              
 
@@ -250,9 +250,9 @@ struct StartButtons: View {
                             .font(.system(size:28, weight: .bold, design: .rounded))
                     }
                 }
-                .frame(width:started ? 350 : 350, height: 64, alignment: .center)
+                .frame(width:started ? screenWidth - 20 : screenWidth - 20, height: 64, alignment: .center)
                 
-                .frame(width: started ? (running ? 350 : 256) : 350)
+                .frame(width: started ? (running ? screenWidth - 20 : screenWidth - 120) : screenWidth - 20)
                 
                 .background(Color(.systemGreen))
                 .cornerRadius(started ? 16 : 32)

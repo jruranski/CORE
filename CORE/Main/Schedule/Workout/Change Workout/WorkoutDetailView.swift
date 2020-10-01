@@ -119,7 +119,7 @@ struct WorkoutDetailView: View {
                     
                     
                 }
-                .frame(width: 375, height: 260)
+                .frame(width: screenWidth, height: 260)
                 
             
             
@@ -139,7 +139,7 @@ struct WorkoutDetailView: View {
                     }
                     
                     .padding()
-                    .frame(width: 360, height: 50, alignment: .center)
+                    .frame(width: screenWidth - 10, height: 50, alignment: .center)
                     .background(Color(.systemGroupedBackground))
                     .cornerRadius(10)
                 }
@@ -212,7 +212,7 @@ struct WorkoutDetailView: View {
                                 
                             }
                             .padding()
-                            .frame(width: 360, height: 50, alignment: .center)
+                            .frame(width: screenWidth - 10, height: 50, alignment: .center)
                             .background(Color(.systemGroupedBackground))
                             .cornerRadius(10)
                         }.buttonStyle(PlainButtonStyle())
@@ -249,13 +249,13 @@ struct WorkoutDetailView: View {
                                 .font(.system(size: 24, weight: .bold, design: .rounded))
                                 .foregroundColor(.white)
                         }.padding()
-                    }.frame(width: 350, height: 60, alignment: .center)
+                    }.frame(width: screenWidth - 20, height: 60, alignment: .center)
                     .background(Color.red)
                     .cornerRadius(20)
                     .padding()
                 }
     //            .edgesIgnoringSafeArea(.all)
-                .frame(width: 375) //change
+                .frame(width: screenWidth) 
                 .frame(maxHeight: .infinity)
                 .background(Color(.systemBackground))
                 .cornerRadius(30, corners: [.topLeft, .topRight])

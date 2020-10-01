@@ -63,7 +63,7 @@ struct NumberChangeView: View {
             
         }
         .edgesIgnoringSafeArea(.all)
-        .frame(width: 375, height: 1200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+        .frame(width: screenWidth, height: 1200, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
         .frame(maxWidth: .infinity, maxHeight: .infinity)
         .background(
             ZStack {

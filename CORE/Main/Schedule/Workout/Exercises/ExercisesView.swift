@@ -111,7 +111,9 @@ struct ExercisesView: View {
             }
             
             if showLocation {
-//                LocationSelectionView(
+                LocationSelectionView(selectedLocation: $selectedLocation, show: $showLocation).environment(\.managedObjectContext, managedObjectContext)
+                    .animation(.spring(response: 0.3, dampingFraction: 0.6, blendDuration: 0))
+                    .transition(.move(edge: .bottom))
             }
             
         }

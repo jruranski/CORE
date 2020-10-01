@@ -31,7 +31,7 @@ struct WorkoutDetail: View {
                     Image(exercise?.gifName ?? "activityAbsDummy")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 375, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                        .frame(width: screenWidth, height: 300, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     Spacer()
                 }
                 .edgesIgnoringSafeArea(.top)
@@ -109,7 +109,7 @@ struct WorkoutDetail: View {
                                 .font(.system(size: 24, weight: .bold, design: .rounded))
                                 .foregroundColor(.white)
                         }
-                        .frame(width: 350, height: 74, alignment: .center)
+                        .frame(width: screenWidth - 20, height: 74, alignment: .center)
                         .background(
                             LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing) // change colors
                         )
@@ -121,7 +121,7 @@ struct WorkoutDetail: View {
                     
                 }
                 
-                .frame(width: 375, height: 540, alignment: .bottom)
+                .frame(width: screenWidth, height: 540, alignment: .bottom)
                 .background(Color.white)
                 .cornerRadius(30, corners: [.topLeft, .topRight])
                 

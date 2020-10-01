@@ -16,7 +16,7 @@ struct ActivitySeparator: View {
             Spacer()
         }
         .padding(.leading, 20)
-        .frame(width: 375, height: 35, alignment: .center) //change
+        .frame(width: screenWidth, height: 35, alignment: .center) //change
         .background(Color(.systemBackground))
         .cornerRadius(20, corners: [.topLeft, .topRight])
         .shadow(color: Color(.label).opacity(0.15), radius: 10, y: -14)

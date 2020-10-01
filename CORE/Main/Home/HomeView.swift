@@ -24,6 +24,12 @@ struct HomeView: View {
     
     var workout: Workout?
     
+    
+    var activityStrings = ["Exercise Time", "Weight Lifted", "Avg. Workout", "Burned Calories", "No. Workouts", "Daily Steps"]
+    var activityDescripttions = ["64MIN/DAY", "5600KG", "54MIN", "754KCAL/DAY", "5", "10 435/DAY"]
+    var activityColors: [UIColor] = [.systemOrange, .systemTeal, .systemPurple, .systemRed, .systemBlue, .systemGray]
+    var activityState: [ArrowState] = [.up, .up, .down, .down, .noChange, .up, .down]
+    
     var body: some View {
 //        NavigationView {
         ZStack {
@@ -125,10 +131,12 @@ struct HomeView: View {
                     SmallTitle(text: "Learn", description: "Check your progress since last week")
                     
                     VStack {
-                        ForEach(1..<4) {_ in
+                        ForEach(activityStrings.indices) {index in
                             HStack(spacing: 20) {
-                                ActivitySmallCard(text: "Exercise Time", numberText: "64MIN/DAY", imageString: "arrowUpFilled", color: #colorLiteral(red: 0.9607843161, green: 0.7058823705, blue: 0.200000003, alpha: 1))
-                                ActivitySmallCard()
+                                if index % 2 == 0 {
+                                ActivitySmallCard(text: activityStrings[index], numberText: activityDescripttions[index], imageString: "arrowUpFilled", color: activityColors[index], state: activityState[index])
+                                    ActivitySmallCard(text: activityStrings[index + 1], numberText: activityDescripttions[index + 1], imageString: "arrowUpFilled", color: activityColors[index + 1], state: activityState[index + 1])
+                                }
                             }
                         }
                         .padding(.vertical, 5)

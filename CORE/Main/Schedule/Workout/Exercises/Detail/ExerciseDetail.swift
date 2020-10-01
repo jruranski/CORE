@@ -23,7 +23,7 @@ struct ExerciseDetail: View {
                     Image(exercise?.gifName ?? "activityAbsDummy")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 375, height: 300, alignment: .center)
+                        .frame(width: screenWidth, height: 300, alignment: .center)
                     Spacer()
                 }
                 .edgesIgnoringSafeArea(.top)
@@ -103,7 +103,7 @@ struct ExerciseDetail: View {
                                 .font(.system(size: 24, weight: .bold, design: .rounded))
                                 .foregroundColor(.white)
                         }
-                        .frame(width: 350, height: 74, alignment: .center)
+                        .frame(width: screenWidth - 20, height: 74, alignment: .center)
                         .background(
                             LinearGradient(gradient: Gradient(colors: [Color(#colorLiteral(red: 0.0654547736, green: 0.2786159813, blue: 0.9171175957, alpha: 1)), Color(#colorLiteral(red: 0, green: 0.9708442092, blue: 0.9009542465, alpha: 1))]), startPoint: .topLeading, endPoint: .bottomTrailing) // change colors
                         )
@@ -112,14 +112,14 @@ struct ExerciseDetail: View {
                     }
                     .padding(.bottom, 10)
                     }
-                    .frame(width: 375, height: 220, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                    .frame(width: screenWidth, height: 220, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                     .background(Color.white) // change 4 dm
                     .cornerRadius(30, corners: [.topLeft, .topRight])
                     .shadow(color: Color.black.opacity(0.2), radius: 10)
                 }
                 .edgesIgnoringSafeArea(.bottom)
                 
-                .frame(width: 375, height: 540, alignment: .bottom)
+                .frame(width: screenWidth, height: 540, alignment: .bottom)
                 .background(Color.white)
                 .cornerRadius(30, corners: [.topLeft, .topRight])
                 

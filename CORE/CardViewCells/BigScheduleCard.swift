@@ -70,7 +70,7 @@ struct BigScheduleCard: View {
             
         }
         
-        .frame(width: 350, height: 155, alignment: .center)
+        .frame(width: screenWidth - 20, height: 155, alignment: .center)
         
         .background(Color.white) //change 4 dm
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))

@@ -91,7 +91,7 @@ struct ExercisesCard: View {
                 
             }
         }
-        .frame(width: 350, height: 140, alignment: .center)
+        .frame(width: screenWidth - 20, height: 140, alignment: .center)
         .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
         .modifier(ShadowModifier())

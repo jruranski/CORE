@@ -58,7 +58,7 @@ extension Exercise {
     public var exerciseMuscle: String {
         var muscle = ""
         
-        let muscleString: String = muscle ?? ""
+        let muscleString: String = muscle
         
         let muscleArray = muscleString.components(separatedBy: ";")
         

@@ -23,11 +23,11 @@ struct ExerciseWorkoutCard: View {
                     Image(exercise?.gifName ?? "activityAbsDummy")
                         .resizable()
                         .aspectRatio(contentMode: .fill)
-                        .frame(width: 350, height: 150, alignment: .center)
+                        .frame(width: screenWidth - 20, height: 150, alignment: .center)
                         Spacer()
                 }
                 
-                .frame(width: 350, height: 250, alignment: .center)
+                .frame(width: screenWidth - 20, height: 250, alignment: .center)
                 
                 .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
                 .modifier(ShadowModifier())
@@ -69,7 +69,7 @@ struct ExerciseWorkoutCard: View {
     //            .padding(.all, 10)
                 
             }
-            .frame(width: 350, height: 120, alignment: .center)
+            .frame(width: screenWidth - 20, height: 120, alignment: .center)
             .background(Color(.systemBackground))
             .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
             .modifier(ShadowModifier())

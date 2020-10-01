@@ -7,13 +7,31 @@
 
 import SwiftUI
 
+enum ArrowState {
+    case up
+    case down
+    case noChange
+}
 struct ActivitySmallCard: View {
     
     var text = "Exercise Time"
     var numberText = "56MIN/DAY"
     var imageString = "arrowUpFilled"
     var color: UIColor = #colorLiteral(red: 0.8273431659, green: 0.2241420448, blue: 0.4397234917, alpha: 1)
-    
+    var state: ArrowState = .up
+    var degrees: Double {
+        switch state {
+        case .up:
+            return 0
+        
+        case .noChange:
+            return 90
+        
+        case .down:
+            return 180
+        
+        }
+    }
     var body: some View {
         HStack {
             HStack {
@@ -21,6 +39,7 @@ struct ActivitySmallCard: View {
                     .resizable()
                     .renderingMode(.template)
                     .foregroundColor(Color(color))
+                    .rotationEffect(.degrees(degrees))
                     .frame(width: 30, height: 30, alignment: .center)
                     .shadow(color: Color(color).opacity(0.2), radius: 10, y: 5)
                     
@@ -36,7 +55,7 @@ struct ActivitySmallCard: View {
                     .font(.system(size: 14, weight: .bold, design: .rounded))
                     .foregroundColor(Color(color))
             }
-        }
+        }.padding(.horizontal, 5)
         .frame(width: 150, height: 65, alignment: .center)
         .background(Color(.systemBackground))
         .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))

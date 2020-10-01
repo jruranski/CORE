@@ -65,7 +65,7 @@ struct ExploreView: View {
                             .padding(.top, -20)
     //                        .padding(.leading, 10)
                             .padding(.bottom, -20)
-                        }.frame(width: 375, height: 275)
+                        }.frame(width: screenWidth, height: 275)
                         
                         
                         ForEach(presetSections.indices) { index in

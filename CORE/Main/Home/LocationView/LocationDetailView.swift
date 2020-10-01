@@ -108,7 +108,7 @@ struct LocationDetailView: View {
                         }
                         
                         .padding()
-                        .frame(width: 350, height: 50, alignment: .center)
+                        .frame(width: screenWidth - 20, height: 50, alignment: .center)
                         .background(Color(.tertiarySystemGroupedBackground))
                         .cornerRadius(10)
                     }.padding(.top)
@@ -122,7 +122,7 @@ struct LocationDetailView: View {
                         }.padding(.horizontal)
                         
                         MapView(location: $location) //mapview
-                            .frame(width: 350, height: 150, alignment: .center)
+                            .frame(width: screenWidth - 20, height: 150, alignment: .center)
                             .cornerRadius(20)
                             .modifier(ShadowModifier())
                     }
@@ -141,7 +141,7 @@ struct LocationDetailView: View {
                                 Text(eqTextFieldString)
                                     .font(.system(size: 18, weight: .bold, design: .rounded))
                             }.padding()
-                            .frame(width: 350, height: 100, alignment: .center)
+                            .frame(width: screenWidth - 20, height: 100, alignment: .center)
                             .background(Color(colorScheme == .light ? .systemBackground : .tertiarySystemGroupedBackground))
                             .cornerRadius(20)
                             .modifier(ShadowModifier())

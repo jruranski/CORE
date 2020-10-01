@@ -14,7 +14,7 @@ struct RestDayCard: View {
                 .font(.system(size: 28, weight: .bold, design: .rounded))
                 .opacity(0.2)
         }
-        .frame(width: 350, height: 100, alignment: .center)
+        .frame(width: screenWidth - 20, height: 100, alignment: .center)
         .background(Color(.systemGray6))
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
 //        .shadow(radius: 15, y: 10)

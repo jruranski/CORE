@@ -52,7 +52,7 @@ struct ArticleView: View {
                 Image("activityAbsDummy")
                     .resizable()
                     .aspectRatio(contentMode: .fill)
-                    .frame(width: 375, height: 180, alignment: .center)
+                    .frame(width: screenWidth, height: 180, alignment: .center)
                     .clipped()
                    
                 

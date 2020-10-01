@@ -57,7 +57,7 @@ struct PastWorkoutSummaryCard: View {
             .padding(.horizontal, 10)
         }
         .padding(.all, 10)
-        .frame(width: 350, height: 275, alignment: .center)
+        .frame(width: screenWidth - 20, height: 275, alignment: .center)
         .background(Color.white) // change for dm
         .clipShape(RoundedRectangle(cornerRadius: 30, style: .continuous))
 //        .shadow(radius: 20)

@@ -79,7 +79,7 @@ struct AddPlaceView: View {
                         }
                         
                         .padding()
-                        .frame(width: 350, height: 50, alignment: .center)
+                        .frame(width: screenWidth - 20, height: 50, alignment: .center)
                         .background(Color(.systemGroupedBackground))
                         .cornerRadius(10)
                     }.padding(.top)
@@ -93,7 +93,7 @@ struct AddPlaceView: View {
                         }.padding(.horizontal)
                         
                         MapView(location: $location) //mapview
-                            .frame(width: 350, height: 150, alignment: .center)
+                            .frame(width: screenWidth - 20, height: 150, alignment: .center)
                             .cornerRadius(20)
                             .modifier(ShadowModifier())
                     }
@@ -112,7 +112,7 @@ struct AddPlaceView: View {
                                 Text("Select Equipment")
                                     .font(.system(size: 18, weight: .bold, design: .rounded))
                             }.padding()
-                            .frame(width: 350, height: 100, alignment: .center)
+                            .frame(width: screenWidth - 20, height: 100, alignment: .center)
                             .background(Color(.systemBackground))
                             .cornerRadius(20)
                             .modifier(ShadowModifier())
@@ -129,7 +129,7 @@ struct AddPlaceView: View {
                                     .font(.system(size: 24, weight: .bold, design: .rounded))
                                     .foregroundColor(.white)
                             }.padding()
-                        }.frame(width: 350, height: 60, alignment: .center)
+                        }.frame(width: screenWidth - 20, height: 60, alignment: .center)
                         .background(Color.red)
                         .cornerRadius(20)
                         .padding()

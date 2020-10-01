@@ -35,7 +35,7 @@ struct StartWorkoutCard: View {
 //                                .offset(x: -50)
                                 LinearGradient(gradient: Gradient(colors: [Color.red, Color.orange]), startPoint: .topLeading, endPoint: .bottomTrailing) //add custom colors
                                     .opacity(1)
-                                    .frame(width: 360)
+                                    .frame(width: screenWidth - 10)
                                     .offset(x: -38)
     //                                .edgesIgnoringSafeArea(.all)
                             

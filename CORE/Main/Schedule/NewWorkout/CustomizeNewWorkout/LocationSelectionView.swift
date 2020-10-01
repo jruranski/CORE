@@ -62,11 +62,11 @@ struct LocationSelectionView: View {
                     
                     
                 }.padding(5)
-            }.frame(width: 360)
+            }.frame(width: screenWidth - 10)
             .background(Color(.systemBackground))
             .cornerRadius(30)
             .modifier(ShadowModifier())
-        }.frame(width: 375, height: 1300, alignment: .center)
+        }.frame(width: screenWidth, height: 1300, alignment: .center)
         .background(BlurView(style: .systemMaterial))
         .animation(.spring(response: 0.6, dampingFraction: 0.4, blendDuration: 0))
     }

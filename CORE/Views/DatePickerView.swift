@@ -9,7 +9,6 @@ import SwiftUI
 
 struct DatePickerView: View {
     
-    
     @Binding var changingDate: Date
     @Binding var show: Bool
     
@@ -24,7 +23,7 @@ struct DatePickerView: View {
                     DatePicker("Input your date", selection: $changingDate)
                         .datePickerStyle(GraphicalDatePickerStyle())
                         
-                        .frame(maxWidth: 350, maxHeight: 400)
+                        .frame(maxWidth: screenWidth - 20, maxHeight: 400)
                     Button(action: {show.toggle() }) {
                         HStack {
                             Text("Done")
@@ -39,11 +38,11 @@ struct DatePickerView: View {
                     }.buttonStyle(PlainButtonStyle())
                     Spacer()
                 }.padding()
-            }.frame(width: 350, height: 500)
+            }.frame(width: screenWidth - 20, height: 500)
             .background(Color(.systemBackground))
             .cornerRadius(30)
             .modifier(ShadowModifier())
-        }.frame(width: 375, height: 1300)
+        }.frame(width: screenWidth, height: 1300)
         .background(BlurView(style: .systemMaterial))
         
     }

@@ -8,6 +8,9 @@
 import SwiftUI
 
 
+public var screenWidth = UIScreen.main.bounds.width
+public var screenHeight = UIScreen.main.bounds.height
+
 // MARK: - Rounded Corners Extension
 extension View {
     func cornerRadius(_ radius: CGFloat, corners: UIRectCorner) -> some View {

@@ -88,7 +88,7 @@ struct ProfileView: View {
                     }
                     }
                 }
-                .frame(width: showContact ? 330 : 350, height: showContact ? 240 : 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
+                .frame(width: showContact ? screenWidth - 45 : screenWidth - 20, height: showContact ? 240 : 400, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
                 .animation(.easeInOut)
                 .background(Color(.systemBackground))
                 .clipShape(RoundedRectangle(cornerRadius: 30.0))
